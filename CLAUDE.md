@@ -13,10 +13,10 @@ This portfolio project consists of **two separate repositories**:
 #### 1. Frontend Repository (`niloykumarbarman.github.io`)
 - **Stack:** Next.js 15, React 19, TypeScript, Tailwind CSS
 - **Deployment:** GitHub Pages (static export)
-- **Location:** `https://github.com/niloykumarbarman/niloykumarbarman.github.io.git`
-- **Repository:** https://github.com/niloykumarbarman/niloykumarbarman.github.io.git
+- **Location:** `https://github.com/niloykumarbarman/niloykumarbarman.github.io`
+- **Repository:** https://github.com/niloykumarbarman/niloykumarbarman.github.io
 - **Purpose:** Portfolio website with AI chatbot UI component
-- **Live URL:** https://github.com/niloykumarbarman/niloykumarbarman.github.io.git
+- **Live URL:** https://github.com/niloykumarbarman/niloykumarbarman.github.io
 
 #### 2. Chatbot API Repository (`portfolio-chatbot-api`)
 - **Stack:** Vercel Serverless Functions, Node.js, TypeScript, Google Gemini AI
@@ -38,7 +38,7 @@ This portfolio project consists of **two separate repositories**:
 
 **Working on Frontend:**
 ```bash
-cd https://github.com/niloykumarbarman/niloykumarbarman.github.io.git
+cd niloykumarbarman.github.io
 npm run dev                 # Runs on http://localhost:3000
 ```
 

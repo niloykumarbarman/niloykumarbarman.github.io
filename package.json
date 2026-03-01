@@ -31,7 +31,7 @@
     "sitemap": "node scripts/generate-sitemap.js",
     "prebuild": "npm run sitemap"
   },
-  "homepage": "https://github.com/niloykumarbarman/niloykumarbarman.github.io.git",
+  "homepage": "https://niloykumarbarman.github.io",
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@iconify/react": "^6.0.2",

@@ -66,14 +66,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://github.com/niloykumarbarman/niloykumarbarman.github.io.git"),
+  metadataBase: new URL("https://niloykumarbarman.github.io"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer",
     description: "10+ years of experience supporting 20+ enterprise clients. Specialized in architecting scalable solutions and practical AI tools that deliver continuous ROI and measurable business impact. Expert in full-stack development and automation.",
-    url: "https://github.com/niloykumarbarman/niloykumarbarman.github.io.git",
+    url: "https://niloykumarbarman.github.io",
     siteName: "Niloy Kumar Barman Portfolio",
     images: [
       {

@@ -316,7 +316,7 @@ npm run optimize
 
 ### 1. Google Search Console
 1. Go to [Google Search Console](https://search.google.com)
-2. Add your property (https://github.com/niloykumarbarman/niloykumarbarman.github.io.git)
+2. Add your property (https://niloykumarbarman.github.io)
 3. Verify ownership using HTML tag method
 4. Update `app/layout.tsx` with verification code:
    ```typescript
