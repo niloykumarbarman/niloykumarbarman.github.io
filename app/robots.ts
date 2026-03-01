@@ -25,9 +25,9 @@ export default function robots(): MetadataRoute.Robots {
       }
     ],
     sitemap: [
-      'https://biswajitpanday.github.io/sitemap.xml',
-      'https://biswajitpanday.github.io/sitemap-index.xml'
+      'https://niloykumarbarman.github.io/sitemap.xm',
+      'https://niloykumarbarman.github.io/sitemap-index.xml'
     ],
-    host: 'https://biswajitpanday.github.io',
+    host: 'https://niloykumarbarman.github.io',
   }
 } 

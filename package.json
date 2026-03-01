@@ -1,5 +1,5 @@
 {
-  "name": "biswajitpanday.github.io",
+  "name": "niloykumarbarman.github.io",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -31,7 +31,7 @@
     "sitemap": "node scripts/generate-sitemap.js",
     "prebuild": "npm run sitemap"
   },
-  "homepage": "https://biswajitpanday.github.io/",
+  "homepage": "https://github.com/niloykumarbarman/niloykumarbarman.github.io.git",
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@iconify/react": "^6.0.2",

@@ -13,10 +13,10 @@ This portfolio project consists of **two separate repositories**:
 #### 1. Frontend Repository (`biswajitpanday.github.io`)
 - **Stack:** Next.js 15, React 19, TypeScript, Tailwind CSS
 - **Deployment:** GitHub Pages (static export)
-- **Location:** `biswajitpanday.github.io/`
-- **Repository:** https://github.com/biswajitpanday/biswajitpanday.github.io
+- **Location:** `https://github.com/niloykumarbarman/niloykumarbarman.github.io.git`
+- **Repository:** https://github.com/niloykumarbarman/niloykumarbarman.github.io.git
 - **Purpose:** Portfolio website with AI chatbot UI component
-- **Live URL:** https://biswajitpanday.github.io
+- **Live URL:** https://github.com/niloykumarbarman/niloykumarbarman.github.io.git
 
 #### 2. Chatbot API Repository (`portfolio-chatbot-api`)
 - **Stack:** Vercel Serverless Functions, Node.js, TypeScript, Google Gemini AI
@@ -38,13 +38,13 @@ This portfolio project consists of **two separate repositories**:
 
 **Working on Frontend:**
 ```bash
-cd biswajitpanday.github.io
+cd https://github.com/niloykumarbarman/niloykumarbarman.github.io.git
 npm run dev                 # Runs on http://localhost:3000
 ```
 
 **Working on Chatbot API (local testing):**
 ```bash
-cd biswajitpanday-portfolio-chatbot
+cd Niloy kumar Barman-portfolio-chatbot
 vercel dev                  # Runs on http://localhost:3001
 ```
 
@@ -123,7 +123,7 @@ All content is centralized in `data/` directory:
 ### AI Chatbot Integration ✨ DEPLOYED
 - **Provider:** Google Gemini AI (free tier)
 - **Architecture:** Frontend UI (React) → Vercel Serverless API → Gemini AI
-- **Status:** ✅ **Live in production** at https://biswajitpanday.github.io
+- **Status:** ✅ **Live in production** at https://github.com/niloykumarbarman/niloykumarbarman.github.io.git
 - **Features:**
   - Floating chat button with expandable window
   - Suggested questions for common queries

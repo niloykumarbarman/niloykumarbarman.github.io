@@ -8,8 +8,8 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
-  // basePath: "/biswajitpanday.github.io",
-  // assetPrefix: "/biswajitpanday.github.io/",
+  // basePath: "/https://github.com/niloykumarbarman/niloykumarbarman.github.io.git",
+  // assetPrefix: "https://github.com/niloykumarbarman/niloykumarbarman.github.io.git",
   reactStrictMode: true,
   images: {
     unoptimized: true,

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Niloy Kumar Barman - Full-Stack .NET Developer",
     description: "Professional portfolio showcasing 10+ years of experience in .NET, React, and cloud technologies",
-    url: "https://biswajitpanday.github.io",
+    url: "https://niloykumarbarman.github.io",
   },
   twitter: {
     title: "Niloy Kumar Barman - Full-Stack .NET Developer",

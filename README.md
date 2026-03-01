@@ -151,7 +151,7 @@ This command performs the following operations in sequence:
 ```bash
 # 1. Clone the repository
 git clone https://github.com/niloykumarbarman/niloykumarbarman.github.io.git
-cd biswajitpanday.github.io
+cd niloykumarbarman.github.io
 
 # 2. Install dependencies
 npm install
@@ -316,7 +316,7 @@ npm run optimize
 
 ### 1. Google Search Console
 1. Go to [Google Search Console](https://search.google.com)
-2. Add your property (https://biswajitpanday.github.io)
+2. Add your property (https://github.com/niloykumarbarman/niloykumarbarman.github.io.git)
 3. Verify ownership using HTML tag method
 4. Update `app/layout.tsx` with verification code:
    ```typescript
@@ -367,8 +367,8 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📞 Contact
 
 - **Email**: niloybarman829@gmail.com
-- **LinkedIn**: [Niloy Kumar Barman](https://linkedin.com/in/biswajitpanday)
-- **GitHub**: [biswajitpanday](https://github.com/biswajitpanday)
+- **LinkedIn**: [Niloy Kumar Barman](https://www.linkedin.com/in/niloy-barman-552634339/)
+- **GitHub**: [niloykumarbarman](https://github.com/niloykumarbarman)
 
 ---
 
