@@ -13,10 +13,10 @@ const SEOOptimizer = () => {
       "name": "Niloy Kumar Barman",
       "jobTitle": "Full-Stack .NET Developer",
       "description": "Professional Full-Stack .NET Developer with 10+ years of experience specializing in scalable applications, cloud solutions with .NET, React, Azure & AWS.",
-      "url": "https://biswajitpanday.github.io",
+      "url": "https://github.com/niloykumarbarman",
       "sameAs": [
-        "https://github.com/biswajitpanday",
-        "https://www.linkedin.com/in/biswajitpanday/",
+        "https://github.com/niloykumarbarman",
+        "https://www.linkedin.com/in/niloy-barman-552634339/",
         // Add other social profiles here
       ],
       "knowsAbout": [
@@ -63,25 +63,25 @@ const SEOOptimizer = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://biswajitpanday.github.io"
+        "item": "https://niloykumarbarman.github.io"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Projects",
-        "item": "https://biswajitpanday.github.io/projects"
+        "item": "https://niloykumarbarman.github.io/projects"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Skills",
-        "item": "https://biswajitpanday.github.io/skills"
+        "item": "https://niloykumarbarman.github.io/skills"
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": "Certifications",
-        "item": "https://biswajitpanday.github.io/certifications"
+        "item": "https://niloykumarbarman.github.io/certifications"
       }
     ]
   };
@@ -96,31 +96,31 @@ const SEOOptimizer = () => {
         "name": "What technologies does Niloy Kumar Barman specialize in?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Biswajit specializes in .NET Core, React, TypeScript, Azure, AWS, SQL Server, MongoDB, and modern web development frameworks with over 10 years of experience."
+          "text": "Niloy specializes in .NET Core, React, TypeScript, Azure, AWS, SQL Server, MongoDB, and modern web development frameworks with over 10 years of experience."
         }
       },
       {
         "@type": "Question",
-        "name": "What types of projects does Biswajit work on?",
+        "name": "What types of projects does Niloy work on?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Biswajit works on full-stack web applications, cloud solutions, enterprise software, API development, database design, and DevOps implementations."
+          "text": "Niloy works on full-stack web applications, cloud solutions, enterprise software, API development, database design, and DevOps implementations."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Biswajit available for freelance projects?",
+        "name": "Is Niloy available for freelance projects?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, Biswajit is available for consulting and freelance projects. Contact through the portfolio website for project inquiries and collaboration opportunities."
+          "text": "Yes, Niloy is available for consulting and freelance projects. Contact through the portfolio website for project inquiries and collaboration opportunities."
         }
       },
       {
         "@type": "Question",
-        "name": "What certifications does Biswajit hold?",
+        "name": "What certifications does Niloy hold?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Biswajit holds Microsoft Azure Fundamentals certification and multiple professional development certifications in software development and cloud technologies."
+          "text": "Niloy holds Microsoft Azure Fundamentals certification and multiple professional development certifications in software development and cloud technologies."
         }
       }
     ]

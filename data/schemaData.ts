@@ -2,7 +2,7 @@
  * Schema.org structured data configurations for better SEO
  */
 
-const baseUrl = 'https://biswajitpanday.github.io';
+const baseUrl = 'https://niloykumarbarman.github.io';
 
 // Person schema for the portfolio owner
 export const personSchema = {
@@ -13,9 +13,9 @@ export const personSchema = {
   description: "Senior .NET Architect with 10+ years delivering mid to enterprise grade applications. Currently at Optimizely serving global enterprise clients. Built SpireWiz achieving 80% efficiency gains, ~$180K annual value, and 600+ developer hours saved annually. Microsoft Certified.",
   url: baseUrl,
   sameAs: [
-    "https://github.com/biswajitpanday",
-    "https://www.linkedin.com/in/biswajitpanday/",
-    "https://medium.com/@biswajitpanday"
+    "https://github.com/niloykumarbarman",
+    "https:https://www.linkedin.com/in/niloy-barman-552634339/",
+    "https://medium.com/@niloykumarbarman"
   ],
   image: `${baseUrl}/assets/photo.webp`,
   address: {

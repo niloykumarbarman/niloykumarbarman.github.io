@@ -25,7 +25,7 @@
 
 ## Executive Summary
 
-The `biswajitpanday.github.io\data\` folder contains **6 TypeScript files** that serve as the data layer for a portfolio website. The data is currently stored as static TypeScript exports, suitable for a static site but requiring migration to MongoDB for dynamic content management.
+The `niloykumarbarman.github.io\data\` folder contains **6 TypeScript files** that serve as the data layer for a portfolio website. The data is currently stored as static TypeScript exports, suitable for a static site but requiring migration to MongoDB for dynamic content management.
 
 ### Current Data Inventory
 
@@ -67,12 +67,12 @@ The `biswajitpanday.github.io\data\` folder contains **6 TypeScript files** that
 | `schemaData.ts` | 3.6 KB | 125 | SEO structured data (Schema.org) | Metadata only |
 
 **File Locations:**
-- `C:\D\PERSONAL\biswajitpanday-portfolio\biswajitpanday.github.io\data\portfolioData.ts`
-- `C:\D\PERSONAL\biswajitpanday-portfolio\biswajitpanday.github.io\data\certificationsData.ts`
-- `C:\D\PERSONAL\biswajitpanday-portfolio\biswajitpanday.github.io\data\skillsData.ts`
-- `C:\D\PERSONAL\biswajitpanday-portfolio\biswajitpanday.github.io\data\timelineData.ts`
-- `C:\D\PERSONAL\biswajitpanday-portfolio\biswajitpanday.github.io\data\navigationData.ts`
-- `C:\D\PERSONAL\biswajitpanday-portfolio\biswajitpanday.github.io\data\schemaData.ts`
+- `C:\D\PERSONAL\niloykumarbarman-portfolio\niloykumarbarman.github.io\data\portfolioData.ts`
+- `C:\D\PERSONAL\niloykumarbarman-portfolio\niloykumarbarman.github.io\data\certificationsData.ts`
+- `C:\D\PERSONAL\niloykumarbarman-portfolio\niloykumarbarman.github.io\data\skillsData.ts`
+- `C:\D\PERSONAL\niloykumarbarman-portfolio\niloykumarbarman.github.io\data\timelineData.ts`
+- `C:\D\PERSONAL\niloykumarbarman-portfolio\niloykumarbarman.github.io\data\navigationData.ts`
+- `C:\D\PERSONAL\niloykumarbarman-portfolio\niloykumarbarman.github.io\data\schemaData.ts`
 
 ---
 

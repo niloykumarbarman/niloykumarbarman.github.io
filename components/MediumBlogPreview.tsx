@@ -124,7 +124,7 @@ const MediumBlogPreview: React.FC<MediumBlogPreviewProps> = ({ maxPosts = 3 }) =
         <div className="bg-gray-900/50 border border-yellow-500/30 rounded-xl p-8 text-center">
           <p className="text-yellow-400/80 mb-4">Unable to load recent articles</p>
           <Link
-            href="https://medium.com/@biswajitpanday"
+            href="https://medium.com/@niloykumarbarman"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-secondary-default hover:text-secondary-default/80 transition-colors"
@@ -150,7 +150,7 @@ const MediumBlogPreview: React.FC<MediumBlogPreviewProps> = ({ maxPosts = 3 }) =
         <div className="bg-gray-900/50 border border-secondary-default/20 rounded-xl p-8 text-center">
           <p className="text-white/60 mb-4">No articles published yet. Stay tuned!</p>
           <Link
-            href="https://medium.com/@biswajitpanday"
+            href="https://medium.com/@niloykumarbarman"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-secondary-default hover:text-secondary-default/80 transition-colors"
@@ -175,7 +175,7 @@ const MediumBlogPreview: React.FC<MediumBlogPreviewProps> = ({ maxPosts = 3 }) =
           <p className="text-sm text-white/60">Thoughts on full-stack development, AI, and cloud architecture</p>
         </div>
         <Link
-          href="https://medium.com/@biswajitpanday"
+          href="https://medium.com/@niloykumarbarman"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-secondary-default/10 to-purple-500/10 hover:from-secondary-default/20 hover:to-purple-500/20 border border-secondary-default/30 hover:border-secondary-default/50 rounded-lg transition-all duration-300 text-sm text-secondary-default font-medium group"

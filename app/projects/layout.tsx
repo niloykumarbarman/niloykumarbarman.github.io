@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Projects - Niloy Kumar Barman's Work Showcase",
     description: "Explore innovative full-stack projects, .NET applications, React apps, and cloud solutions",
-    url: "https://biswajitpanday.github.io/projects",
+    url: "https://niloykumarbarman.github.io/projects",
   },
   twitter: {
     title: "Projects - Niloy Kumar Barman's Work Showcase",

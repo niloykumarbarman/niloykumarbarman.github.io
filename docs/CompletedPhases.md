@@ -268,7 +268,7 @@
 #### Task 33.5: Blog Post Previews (Medium Integration) ✅ COMPLETED
 **Effort:** 3 hours
 - Created build-time RSS fetch script (`scripts/fetch-medium-posts.js`)
-- Fetches Medium RSS feed: `https://medium.com/feed/@biswajitpanday`
+- Fetches Medium RSS feed: `https://medium.com/feed/@niloykumarbarman`
 - Parses XML and extracts: title, link, date, tags, thumbnail, read time
 - Saves to `public/data/medium-posts.json` (5 blog posts currently)
 - Created `MediumBlogPreview` component with loading/error states
@@ -421,7 +421,7 @@
 2. ✅ **Updated subtitle:** "Featured on LobeHub & MSeep AI"
 3. ✅ **Added platform links in metrics and case study:**
    - LobeHub: lobehub.com/mcp/strix-ai-currentdt-mcp
-   - MSeep AI: mseep.ai/app/biswajitpanday-currentdt-mcp
+   - MSeep AI: mseep.ai/app/niloykumarbarman-currentdt-mcp
 4. ✅ **Added recognition:** "Platform Recognition" badge for LobeHub & MSeep AI
 
 #### Task 31.2: Organize Certifications Display ✅ ALREADY IMPLEMENTED

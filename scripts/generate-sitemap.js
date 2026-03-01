@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DOMAIN = 'https://biswajitpanday.github.io';
+const DOMAIN = 'niloykumarbarman.github.io';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://portfolio-admin-blue.vercel.app';
 const SITEMAP_OUTPUT_PATH = path.join(__dirname, '../public/sitemap.xml');
 const SITEMAP_INDEX_OUTPUT_PATH = path.join(__dirname, '../public/sitemap-index.xml');

@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://biswajitpanday.github.io'
+  const baseUrl = 'https://niloykumarbarman.github.io'
   const currentDate = new Date()
   
   return [

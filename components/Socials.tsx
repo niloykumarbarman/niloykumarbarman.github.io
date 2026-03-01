@@ -12,10 +12,10 @@ interface SocialsProps {
 
 // Fallback default values
 const DEFAULT_SOCIAL_LINKS = {
-    github: 'https://github.com/biswajitpanday',
-    linkedin: 'https://www.linkedin.com/in/biswajitpanday',
-    medium: 'https://medium.com/@biswajitpanday',
-    stackoverflow: 'https://stackoverflow.com/users/2923956/biswajit-panday'
+    github: 'https://github.com/niloykumarbarman',
+    linkedin: 'https://www.linkedin.com/in/niloykumarbarman',
+    medium: 'https://medium.com/@niloykumarbarman',
+    stackoverflow: 'https://stackoverflow.com/users/2923956/niloykumarbarman'
 };
 
 const Socials = ({ containerStyles, iconStyles }: SocialsProps) => {

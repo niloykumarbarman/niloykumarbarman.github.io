@@ -116,7 +116,7 @@ const HomeClient = ({
   // Dynamic SEO metadata (with fallback to defaults)
   const seoTitle = portfolioMetadata?.seoTitle || "Niloy Kumar Barman - Senior .NET Architect & AI Solutions Engineer";
   const seoDescription = portfolioMetadata?.metaDescription || `Senior .NET Architect with ${totalExperience} delivering mid to enterprise grade platforms. Currently at Optimizely, delivering solutions for global enterprise clients. Built SpireWiz, an AI tool achieving 80% time reduction and $180K annual business value. Microsoft Certified.`;
-  const ogImage = portfolioMetadata?.seo?.ogImage || "https://biswajitpanday.github.io/assets/profile/profile-large.webp";
+  const ogImage = portfolioMetadata?.seo?.ogImage || "https://niloykumarbarman.github.io/assets/profile/profile-large.webp";
   const twitterCard = portfolioMetadata?.seo?.twitterCard || "summary_large_image";
 
   return (
@@ -125,7 +125,7 @@ const HomeClient = ({
         title={seoTitle}
         description={seoDescription}
         image={ogImage}
-        url="https://biswajitpanday.github.io"
+        url="https://niloykumarbarman.github.io"
         type="website"
         twitterCard={twitterCard as 'summary' | 'summary_large_image'}
       />
@@ -287,7 +287,7 @@ const HomeClient = ({
                 <div className="flex flex-col sm:flex-row items-center gap-3">
                   <a
                     href={resumeUrl}
-                    download="Biswajit_Panday_Resume.pdf"
+                    download="Niloy_Kumar_Barman_Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleResumeDownload}

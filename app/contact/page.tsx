@@ -108,14 +108,14 @@ const validateForm = (data: FormData) => {
 const DEFAULT_CONTACT_INFO = {
   phone: "+880 1766644823",
   email: "niloybarman829@gmail.com",
-  teams: "biswajitpanday@live.com",
+  teams: "niloykumarbarman@live.com",
   location: "Dhaka, Bangladesh",
 };
 
 const DEFAULT_SOCIAL_LINKS = {
-  linkedin: "https://linkedin.com/in/biswajitpanday",
-  github: "https://github.com/biswajitpanday",
-  medium: "https://medium.com/@biswajitpanday",
+  linkedin: "https://www.linkedin.com/in/niloy-barman-552634339/",
+  github: "https://github.com/niloykumarbarman",
+  medium: "https://medium.com/@niloykumarbarman",
 };
 
 const Contact = () => {

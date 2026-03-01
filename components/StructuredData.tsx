@@ -31,13 +31,13 @@ export const PersonSchema = () => {
     name: "Niloy Kumar Barman",
     jobTitle: "Full-Stack .NET Developer",
     description: "Professional Full-Stack .NET Developer with 10+ years of experience specializing in scalable applications, cloud solutions with .NET, React, Azure & AWS.",
-    url: "https://biswajitpanday.github.io",
+    url: "https://niloykumarbarman.github.io",
     sameAs: [
-      "https://github.com/biswajitpanday",
-      "https://www.linkedin.com/in/biswajitpanday/",
-      "https://medium.com/@biswajitpanday"
+      "https://github.com/niloykumarbarman",
+      "https://www.linkedin.com/in/niloykumarbarman/",
+      "https://medium.com/@niloykumarbarman"
     ],
-    image: "https://biswajitpanday.github.io/assets/photo.webp",
+    image: "https://niloykumarbarman.github.io/assets/photo.webp",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Dhaka",
@@ -72,7 +72,7 @@ export const WebSiteSchema = () => {
     "@type": "WebSite",
     name: "Niloy Kumar Barman - Portfolio",
     description: "Professional portfolio showcasing Full-Stack .NET development expertise, cloud solutions, and innovative projects.",
-    url: "https://biswajitpanday.github.io",
+    url: "https://niloykumarbarman.github.io",
     author: {
       "@type": "Person",
       name: "Niloy Kumar Barman"
@@ -83,10 +83,10 @@ export const WebSiteSchema = () => {
       "@type": "Person", 
       name: "Niloy Kumar Barman"
     },
-    logo: "https://biswajitpanday.github.io/assets/photo.webp",
+    logo: "https://niloykumarbarman.github.io/assets/photo.webp",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://biswajitpanday.github.io/search?q={search_term_string}",
+      target: "https://niloykumarbarman.github.io/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };
@@ -108,7 +108,7 @@ export const OrganizationSchema = () => {
     "@type": "ProfessionalService",
     name: "Niloy Kumar Barman - Full-Stack Development Services",
     description: "Professional Full-Stack .NET development services specializing in scalable web applications, cloud solutions, and modern development practices.",
-    url: "https://biswajitpanday.github.io",
+    url: "https://niloykumarbarman.github.io",
     founder: {
       "@type": "Person",
       name: "Niloy Kumar Barman"
@@ -165,11 +165,11 @@ export const generateWebPageSchema = (
 ) => ({
   name: title,
   description: description,
-  url: `https://biswajitpanday.github.io${path}`,
+  url: `https://niloykumarbarman.github.io${path}`,
   isPartOf: {
     '@type': 'WebSite',
     name: 'Niloy Kumar Barman - Portfolio',
-    url: 'https://biswajitpanday.github.io'
+    url: 'https://niloykumarbarman.github.io'
   },
   image: images.length > 0 ? images : ['https://biswajitpanday.github.io/assets/photo.webp']
 });

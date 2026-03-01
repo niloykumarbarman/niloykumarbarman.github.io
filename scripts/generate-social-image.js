@@ -359,7 +359,7 @@ const generateSocialImageTemplate = () => {
                 <span class="skill">AWS</span>
             </div>
             
-            <div class="website">biswajitpanday.github.io</div>
+            <div class="website">niloykumarbarman.github.io</div>
         </div>
         
         <div class="profile-section">
@@ -398,7 +398,7 @@ const generateSocialImageTemplate = () => {
                 <span class="skill">Microsoft Certified</span>
             </div>
             
-            <div class="website">biswajitpanday.github.io</div>
+            <div class="website">niloykumarbarman.github.io</div>
         </div>
     </div>
     

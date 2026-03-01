@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Technical Skills & Expertise - Niloy Kumar Barman",
     description: "Comprehensive overview of technical expertise including .NET, React, cloud technologies, and modern development frameworks",
-    url: "https://biswajitpanday.github.io/skills",
+    url: "https://niloykumarbarman.github.io/skills",
   },
   twitter: {
     title: "Technical Skills & Expertise - Niloy Kumar Barman",

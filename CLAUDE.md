@@ -10,7 +10,7 @@ This is a professional portfolio website for Niloy Kumar Barman, built with Next
 
 This portfolio project consists of **two separate repositories**:
 
-#### 1. Frontend Repository (`biswajitpanday.github.io`)
+#### 1. Frontend Repository (`niloykumarbarman.github.io`)
 - **Stack:** Next.js 15, React 19, TypeScript, Tailwind CSS
 - **Deployment:** GitHub Pages (static export)
 - **Location:** `https://github.com/niloykumarbarman/niloykumarbarman.github.io.git`
@@ -21,8 +21,8 @@ This portfolio project consists of **two separate repositories**:
 #### 2. Chatbot API Repository (`portfolio-chatbot-api`)
 - **Stack:** Vercel Serverless Functions, Node.js, TypeScript, Google Gemini AI
 - **Deployment:** Vercel (free tier)
-- **Location:** `biswajitpanday-portfolio-chatbot/` (local development folder)
-- **Repository:** https://github.com/biswajitpanday/portfolio-chatbot-api
+- **Location:** `niloykumarbarman-portfolio-chatbot/` (local development folder)
+- **Repository:** https://github.com/niloykumarbarman/portfolio-chatbot-api
 - **Purpose:** AI chatbot backend with rate limiting, CORS security, and AI integration
 - **API Endpoint:** Set in `NEXT_PUBLIC_CHATBOT_API_URL` environment variable
 
@@ -135,12 +135,12 @@ All content is centralized in `data/` directory:
   - Google Analytics event tracking
 - **Knowledge Base:** Hardcoded portfolio data (projects, skills, certifications)
 - **Deployment:** Separate Vercel project (see Multi-Repository Architecture)
-- **API Repository:** https://github.com/biswajitpanday/portfolio-chatbot-api
+- **API Repository:** https://github.com/niloykumarbarman/portfolio-chatbot-api
 
 ### GitHub Activity Integration ✨ LIVE
 - **API:** GitHub REST API v3 (public, no authentication required)
 - **Rate Limit:** 60 requests/hour (unauthenticated)
-- **Data Source:** Public events from `biswajitpanday` GitHub account
+- **Data Source:** Public events from `niloykumarbarman` GitHub account
 - **Features:**
   - Real-time contribution graph (last 365 days)
   - Live stats: commits, PRs, issues, active days

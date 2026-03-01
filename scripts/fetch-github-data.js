@@ -32,7 +32,7 @@ if (fs.existsSync(envPath)) {
 }
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_USERNAME = 'biswajitpanday';
+const GITHUB_USERNAME = 'niloykumarbarman';
 const OUTPUT_FILE = path.join(__dirname, '..', 'public', 'data', 'github-contributions.json');
 
 async function fetchContributionsGraphQL() {
