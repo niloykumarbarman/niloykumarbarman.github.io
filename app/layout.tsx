@@ -66,14 +66,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://biswajitpanday.github.io"),
+  metadataBase: new URL("https://github.com/niloykumarbarman/niloykumarbarman.github.io.git"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer",
     description: "10+ years of experience supporting 20+ enterprise clients. Specialized in architecting scalable solutions and practical AI tools that deliver continuous ROI and measurable business impact. Expert in full-stack development and automation.",
-    url: "https://biswajitpanday.github.io",
+    url: "https://github.com/niloykumarbarman/niloykumarbarman.github.io.git",
     siteName: "Niloy Kumar Barman Portfolio",
     images: [
       {
@@ -90,8 +90,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@biswajitpanday",
-    creator: "@biswajitpanday",
+    site: "@niloykumarbarman",
+    creator: "@niloykumarbarman",
     title: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer",
     description: "10+ years supporting 20+ enterprise clients. Architecting scalable solutions and practical AI tools with measurable ROI. Expert in full-stack development and automation.",
     images: {
@@ -124,8 +124,8 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-title': 'Niloy Kumar Barman',
     'og:image:secure_url': 'https://biswajitpanday.github.io/assets/social-preview.png',
     'article:author': 'Niloy Kumar Barman',
-    'profile:first_name': 'Biswajit',
-    'profile:last_name': 'Panday',
+    'profile:first_name': 'Niloy Kumar',
+    'profile:last_name': 'Barman',
     'profile:gender': 'male',
   },
 };
