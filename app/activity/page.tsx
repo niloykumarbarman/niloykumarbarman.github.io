@@ -20,15 +20,17 @@ export default function ActivityPage() {
   // Animated counters - use real data when available
   const totalContributionsCount = useCountUp({
     end: githubStats?.totalContributions || 0,
-    duration: 2000
+    duration: 2000,
   });
+
   const activeDaysCount = useCountUp({
     end: githubStats?.activeDays || 0,
-    duration: 1900
+    duration: 1900,
   });
+
   const currentStreakCount = useCountUp({
     end: githubStats?.currentStreak || 0,
-    duration: 1800
+    duration: 1800,
   });
 
   return (
@@ -41,15 +43,15 @@ export default function ActivityPage() {
             color: "secondary",
             animation: "pulse",
             position: { top: "20%", right: "15%" },
-            opacity: 50
+            opacity: 50,
           },
           {
             size: "md",
             color: "secondary",
             animation: "ping",
             position: { bottom: "30%", left: "10%" },
-            opacity: 40
-          }
+            opacity: 40,
+          },
         ]}
       />
 
@@ -65,6 +67,7 @@ export default function ActivityPage() {
               <h1 className="text-3xl xl:text-4xl font-bold leading-tight bg-gradient-to-r from-[#00BFFF] to-[#0080FF] bg-clip-text text-transparent">
                 GitHub Activity
               </h1>
+
               <a
                 href={GITHUB_PROFILE_URL}
                 target="_blank"
@@ -72,9 +75,13 @@ export default function ActivityPage() {
                 className="p-2 bg-white/5 hover:bg-white/10 border border-secondary-default/20 rounded-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 aria-label="View GitHub profile"
               >
-                <FaGithub className="text-xl text-white/70 hover:text-secondary-default transition-colors" aria-hidden="true" />
+                <FaGithub
+                  className="text-xl text-white/70 hover:text-secondary-default transition-colors"
+                  aria-hidden="true"
+                />
               </a>
             </div>
+
             <p className="text-sm font-medium leading-relaxed">
               <span className="bg-gradient-to-r from-emerald-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
                 Real-time contribution data showing{" "}
@@ -83,7 +90,8 @@ export default function ActivityPage() {
                 active development
               </span>
               <span className="bg-gradient-to-r from-emerald-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                {" "}and open source contributions
+                {" "}
+                and open source contributions
               </span>
             </p>
           </div>
@@ -111,7 +119,7 @@ export default function ActivityPage() {
                 </div>
               </div>
 
-              <div className="hidden sm:block w-px h-10 bg-white/10" aria-hidden="true"></div>
+              <div className="hidden sm:block w-px h-10 bg-white/10" aria-hidden="true" />
 
               {/* Active Days */}
               <div ref={activeDaysCount.ref} className="flex items-center gap-3">
@@ -126,7 +134,7 @@ export default function ActivityPage() {
                 </div>
               </div>
 
-              <div className="hidden sm:block w-px h-10 bg-white/10" aria-hidden="true"></div>
+              <div className="hidden sm:block w-px h-10 bg-white/10" aria-hidden="true" />
 
               {/* Current Streak */}
               <div ref={currentStreakCount.ref} className="flex items-center gap-3">
@@ -141,7 +149,7 @@ export default function ActivityPage() {
                 </div>
               </div>
 
-              <div className="hidden lg:block w-px h-10 bg-white/10" aria-hidden="true"></div>
+              <div className="hidden lg:block w-px h-10 bg-white/10" aria-hidden="true" />
 
               {/* Status Indicator */}
               <div className="flex items-center gap-3">
@@ -160,7 +168,11 @@ export default function ActivityPage() {
         </motion.div>
 
         {/* Activity Graph Component */}
-        <GitHubActivityGraph onStatsLoaded={handleStatsLoaded} />
+        <GitHubActivityGraph
+          onStatsLoaded={handleStatsLoaded}
+          username="niloykumarbarman"
+          profileUrl="https://github.com/niloykumarbarman"
+        />
       </div>
     </section>
   );

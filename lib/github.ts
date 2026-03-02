@@ -12,7 +12,7 @@ export const GITHUB_USERNAME = "niloykumarbarman";
 export const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USERNAME}`;
 
 // Activity types mapped from GitHub events
-export type ActivityType = 'commit' | 'pr' | 'issue' | 'repo' | 'other';
+export type ActivityType = "commit" | "pr" | "issue" | "repo" | "other";
 
 // GraphQL API response type
 interface GraphQLContributionResponse {
@@ -64,19 +64,19 @@ interface GitHubEvent {
  */
 function mapEventType(eventType: string): ActivityType {
   switch (eventType) {
-    case 'PushEvent':
-      return 'commit';
-    case 'PullRequestEvent':
-      return 'pr';
-    case 'IssuesEvent':
-    case 'IssueCommentEvent':
-      return 'issue';
-    case 'CreateEvent':
-    case 'ForkEvent':
-    case 'WatchEvent':
-      return 'repo';
+    case "PushEvent":
+      return "commit";
+    case "PullRequestEvent":
+      return "pr";
+    case "IssuesEvent":
+    case "IssueCommentEvent":
+      return "issue";
+    case "CreateEvent":
+    case "ForkEvent":
+    case "WatchEvent":
+      return "repo";
     default:
-      return 'other';
+      return "other";
   }
 }
 
@@ -87,20 +87,20 @@ function mapEventType(eventType: string): ActivityType {
  */
 async function fetchCachedContributions(): Promise<Map<string, number> | null> {
   try {
-    const response = await fetch('/data/github-contributions.json', {
+    const response = await fetch("/data/github-contributions.json", {
       // Cache for 1 hour since this is static data
-      next: { revalidate: 3600 }
+      next: { revalidate: 3600 },
     });
 
     if (!response.ok) {
-      console.warn('Cached GitHub data unavailable, will use Events API fallback');
+      console.warn("Cached GitHub data unavailable, will use Events API fallback");
       return null;
     }
 
     const data: GraphQLContributionResponse = await response.json();
 
     if (!data.success || !data.contributionMap) {
-      console.warn('Invalid cached data, will use Events API fallback');
+      console.warn("Invalid cached data, will use Events API fallback");
       return null;
     }
 
@@ -114,7 +114,7 @@ async function fetchCachedContributions(): Promise<Map<string, number> | null> {
     console.log(`   Data from: ${data.dateRange.from} to ${data.dateRange.to}`);
     return contributionMap;
   } catch (error) {
-    console.warn('Failed to load cached GitHub data:', error);
+    console.warn("Failed to load cached GitHub data:", error);
     return null;
   }
 }
@@ -130,16 +130,16 @@ async function fetchGitHubEvents(username: string, page: number = 1): Promise<Gi
       `https://api.github.com/users/${username}/events/public?per_page=1000&page=${page}`,
       {
         headers: {
-          'Accept': 'application/vnd.github.v3+json',
+          Accept: "application/vnd.github.v3+json",
         },
         // Cache for 5 minutes to avoid rate limiting
-        next: { revalidate: 300 }
+        next: { revalidate: 300 },
       }
     );
 
     if (!response.ok) {
       if (response.status === 403) {
-        console.warn('GitHub API rate limit exceeded');
+        console.warn("GitHub API rate limit exceeded");
         return [];
       }
       throw new Error(`GitHub API error: ${response.status}`);
@@ -147,7 +147,7 @@ async function fetchGitHubEvents(username: string, page: number = 1): Promise<Gi
 
     return await response.json();
   } catch (error) {
-    console.error('Failed to fetch GitHub events:', error);
+    console.error("Failed to fetch GitHub events:", error);
     return [];
   }
 }
@@ -175,14 +175,14 @@ async function fetchAllEvents(username: string): Promise<GitHubEvent[]> {
 function processEventsToActivities(events: GitHubEvent[]): GitHubActivity[] {
   const activityMap = new Map<string, GitHubActivity>();
 
-  events.forEach(event => {
-    const date = event.created_at.split('T')[0]; // YYYY-MM-DD
+  events.forEach((event) => {
+    const date = event.created_at.split("T")[0]; // YYYY-MM-DD
     const type = mapEventType(event.type);
     const key = `${date}-${type}`;
 
     // Count commits for PushEvents
     let count = 1;
-    if (event.type === 'PushEvent' && event.payload?.commits) {
+    if (event.type === "PushEvent" && event.payload?.commits) {
       count = event.payload.commits.length;
     }
 
@@ -200,13 +200,13 @@ function processEventsToActivities(events: GitHubEvent[]): GitHubActivity[] {
         date,
         count,
         type,
-        details: event.repo?.name ? [event.repo.name] : undefined
+        details: event.repo?.name ? [event.repo.name] : undefined,
       });
     }
   });
 
-  return Array.from(activityMap.values()).sort((a, b) =>
-    new Date(b.date).getTime() - new Date(a.date).getTime()
+  return Array.from(activityMap.values()).sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 }
 
@@ -217,7 +217,7 @@ function calculateStreaks(activities: GitHubActivity[]): { current: number; long
   if (activities.length === 0) return { current: 0, longest: 0 };
 
   // Create a set of dates with activity
-  const activeDates = new Set(activities.map(a => a.date));
+  const activeDates = new Set(activities.map((a) => a.date));
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -227,7 +227,7 @@ function calculateStreaks(activities: GitHubActivity[]): { current: number; long
   let checkDate = new Date(today);
 
   while (true) {
-    const dateStr = checkDate.toISOString().split('T')[0];
+    const dateStr = checkDate.toISOString().split("T")[0];
     if (activeDates.has(dateStr)) {
       currentStreak++;
       checkDate.setDate(checkDate.getDate() - 1);
@@ -235,7 +235,7 @@ function calculateStreaks(activities: GitHubActivity[]): { current: number; long
       // Check if yesterday had activity (allow 1 day gap for today not being over)
       if (currentStreak === 0) {
         checkDate.setDate(checkDate.getDate() - 1);
-        const yesterdayStr = checkDate.toISOString().split('T')[0];
+        const yesterdayStr = checkDate.toISOString().split("T")[0];
         if (activeDates.has(yesterdayStr)) {
           currentStreak++;
           checkDate.setDate(checkDate.getDate() - 1);
@@ -257,7 +257,9 @@ function calculateStreaks(activities: GitHubActivity[]): { current: number; long
     } else {
       const prevDate = new Date(sortedDates[i - 1]);
       const currDate = new Date(sortedDates[i]);
-      const diffDays = Math.round((currDate.getTime() - prevDate.getTime()) / (1000 * 60 * 60 * 24));
+      const diffDays = Math.round(
+        (currDate.getTime() - prevDate.getTime()) / (1000 * 60 * 60 * 24)
+      );
 
       if (diffDays === 1) {
         tempStreak++;
@@ -275,7 +277,9 @@ function calculateStreaks(activities: GitHubActivity[]): { current: number; long
 /**
  * Calculates streak statistics from GraphQL contribution map (1 year of data)
  */
-function calculateStreaksFromMap(contributionMap: Map<string, number>): { current: number; longest: number } {
+function calculateStreaksFromMap(
+  contributionMap: Map<string, number>
+): { current: number; longest: number } {
   if (contributionMap.size === 0) return { current: 0, longest: 0 };
 
   // Create a set of dates with activity (count > 0)
@@ -296,7 +300,7 @@ function calculateStreaksFromMap(contributionMap: Map<string, number>): { curren
   let checkDate = new Date(today);
 
   while (true) {
-    const dateStr = checkDate.toISOString().split('T')[0];
+    const dateStr = checkDate.toISOString().split("T")[0];
     if (activeDates.has(dateStr)) {
       currentStreak++;
       checkDate.setDate(checkDate.getDate() - 1);
@@ -304,7 +308,7 @@ function calculateStreaksFromMap(contributionMap: Map<string, number>): { curren
       // Check if yesterday had activity (allow 1 day gap for today not being over)
       if (currentStreak === 0) {
         checkDate.setDate(checkDate.getDate() - 1);
-        const yesterdayStr = checkDate.toISOString().split('T')[0];
+        const yesterdayStr = checkDate.toISOString().split("T")[0];
         if (activeDates.has(yesterdayStr)) {
           currentStreak++;
           checkDate.setDate(checkDate.getDate() - 1);
@@ -326,7 +330,9 @@ function calculateStreaksFromMap(contributionMap: Map<string, number>): { curren
     } else {
       const prevDate = new Date(sortedDates[i - 1]);
       const currDate = new Date(sortedDates[i]);
-      const diffDays = Math.round((currDate.getTime() - prevDate.getTime()) / (1000 * 60 * 60 * 24));
+      const diffDays = Math.round(
+        (currDate.getTime() - prevDate.getTime()) / (1000 * 60 * 60 * 24)
+      );
 
       if (diffDays === 1) {
         tempStreak++;
@@ -349,25 +355,17 @@ export async function fetchGitHubStats(username: string = GITHUB_USERNAME): Prom
   const activities = processEventsToActivities(events);
 
   // Calculate stats
-  const totalCommits = activities
-    .filter(a => a.type === 'commit')
-    .reduce((sum, a) => sum + a.count, 0);
+  const totalCommits = activities.filter((a) => a.type === "commit").reduce((sum, a) => sum + a.count, 0);
 
-  const totalPRs = activities
-    .filter(a => a.type === 'pr')
-    .reduce((sum, a) => sum + a.count, 0);
+  const totalPRs = activities.filter((a) => a.type === "pr").reduce((sum, a) => sum + a.count, 0);
 
-  const totalIssues = activities
-    .filter(a => a.type === 'issue')
-    .reduce((sum, a) => sum + a.count, 0);
+  const totalIssues = activities.filter((a) => a.type === "issue").reduce((sum, a) => sum + a.count, 0);
 
-  const totalRepos = activities
-    .filter(a => a.type === 'repo')
-    .reduce((sum, a) => sum + a.count, 0);
+  const totalRepos = activities.filter((a) => a.type === "repo").reduce((sum, a) => sum + a.count, 0);
 
   const totalContributions = totalCommits + totalPRs + totalIssues + totalRepos;
 
-  const uniqueDays = new Set(activities.map(a => a.date));
+  const uniqueDays = new Set(activities.map((a) => a.date));
   const activeDays = uniqueDays.size;
 
   const streaks = calculateStreaks(activities);
@@ -381,7 +379,7 @@ export async function fetchGitHubStats(username: string = GITHUB_USERNAME): Prom
     activeDays,
     currentStreak: streaks.current,
     longestStreak: streaks.longest,
-    recentActivity: activities
+    recentActivity: activities,
   };
 }
 
@@ -402,7 +400,7 @@ export function generateContributionData(
   for (let i = 0; i < 365; i++) {
     const date = new Date(today);
     date.setDate(date.getDate() - i);
-    const dateStr = date.toISOString().split('T')[0];
+    const dateStr = date.toISOString().split("T")[0];
     contributionMap.set(dateStr, 0);
   }
 
@@ -415,7 +413,7 @@ export function generateContributionData(
   }
 
   // Otherwise, fill in from activities (fallback to Events API - last 90 days)
-  activities.forEach(activity => {
+  activities.forEach((activity) => {
     const existing = contributionMap.get(activity.date) || 0;
     contributionMap.set(activity.date, existing + activity.count);
   });
@@ -425,59 +423,16 @@ export function generateContributionData(
 
 /**
  * Enhanced stats fetcher with cached contribution data
- * Tries cached data first (1 year from build-time), falls back to Events API (90 days)
+ * ✅ FIX: disable cache JSON and always use live Events API data
  */
 export async function fetchGitHubStatsWithContributions(
   username: string = GITHUB_USERNAME
 ): Promise<{ stats: GitHubStats; contributionMap: Map<string, number> | null }> {
-  // Try cached contributions first (from build-time GraphQL fetch)
-  const cachedData = await fetchCachedContributions();
-
-  // Fetch events for detailed stats (commits, PRs, etc.)
+  // Always use live data (Events API)
   const eventsStats = await fetchGitHubStats(username);
 
-  // If we have GraphQL data, use it for more accurate yearly stats
-  if (cachedData && cachedData.size > 0) {
-    // Calculate total contributions from GraphQL data
-    let totalContributions = 0;
-    cachedData.forEach(count => {
-      totalContributions += count;
-    });
-
-    // Calculate active days (days with count > 0)
-    let activeDays = 0;
-    cachedData.forEach(count => {
-      if (count > 0) activeDays++;
-    });
-
-    // Calculate streaks from full year of data
-    const streaks = calculateStreaksFromMap(cachedData);
-
-    // Calculate average daily contributions (excluding zero days)
-    const avgDaily = activeDays > 0 ? Math.round((totalContributions / activeDays) * 10) / 10 : 0;
-
-    // Merge GraphQL stats with Events API detailed breakdown
-    const enhancedStats: GitHubStats = {
-      ...eventsStats,
-      totalContributions, // Use GraphQL total (1 year)
-      activeDays, // Use GraphQL active days (1 year)
-      currentStreak: streaks.current, // Use GraphQL streak (1 year)
-      longestStreak: streaks.longest, // Use GraphQL longest streak (1 year)
-      // Keep Events API detailed breakdown (commits, PRs, issues from last 90 days)
-    };
-
-    console.log(`✅ Using 1-year GraphQL stats: ${totalContributions} contributions, ${activeDays} active days`);
-
-    return {
-      stats: enhancedStats,
-      contributionMap: cachedData,
-    };
-  }
-
-  // Fallback to Events API only (90 days)
-  console.warn('⚠️  Using Events API fallback (90 days only)');
   return {
     stats: eventsStats,
-    contributionMap: cachedData,
+    contributionMap: null,
   };
 }

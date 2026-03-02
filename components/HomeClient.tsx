@@ -116,7 +116,7 @@ const HomeClient = ({
   // Dynamic SEO metadata (with fallback to defaults)
   const seoTitle = portfolioMetadata?.seoTitle || "Niloy Kumar Barman - Senior .NET Architect & AI Solutions Engineer";
   const seoDescription = portfolioMetadata?.metaDescription || `Senior .NET Architect with ${totalExperience} delivering mid to enterprise grade platforms. Currently at Optimizely, delivering solutions for global enterprise clients. Built SpireWiz, an AI tool achieving 80% time reduction and $180K annual business value. Microsoft Certified.`;
-  const ogImage = portfolioMetadata?.seo?.ogImage || "https://niloykumarbarman.github.io/assets/profile/profile-large.webp";
+  const ogImage = portfolioMetadata?.seo?.ogImage || "https://niloykumarbarman.github.io/assets/profile/webp/niloy.webp";
   const twitterCard = portfolioMetadata?.seo?.twitterCard || "summary_large_image";
 
   return (
@@ -226,10 +226,10 @@ const HomeClient = ({
                 <span className="text-[#00BFFF] font-medium">Optimizely</span> serving
                 global enterprise clients. Passionate about AI integration—built{" "}
                 <span className="text-[#00BFFF] font-medium">SpireWiz</span> achieving{" "}
-                <span className="text-emerald-400 font-medium">80% </span>{" "} efficiency gains. {" "}
-                <span className="text-purple-400 font-medium">~$180K </span> annual value, and {" "}
-                <span className="text-purple-400 font-medium">600+</span> {" "}
-                developer hours saved annually. {" "}
+                <span className="text-emerald-400 font-medium">80% </span>{" "} efficiency gains.{" "}
+                <span className="text-purple-400 font-medium">~$180K </span> annual value, and{" "}
+                <span className="text-purple-400 font-medium">600+</span>{" "}
+                developer hours saved annually.{" "}
                 <span className="text-[#00BFFF] font-medium">Microsoft Certified</span>.
               </p>
 
@@ -377,9 +377,12 @@ const HomeClient = ({
           </Suspense>
 
           {/* GitHub Activity - Shows Active Development (MOVED UP for visibility) */}
-          <Suspense fallback={<ComponentFallback className="w-full" height="h-96" />}>
-            <GitHubActivityGraph />
-          </Suspense>
+                  <Suspense fallback={<ComponentFallback className="w-full" height="h-96" />}>
+                      <GitHubActivityGraph
+                       username="niloykumarbarman"
+                       profileUrl="https://github.com/niloykumarbarman"
+                      />
+</Suspense>
 
           {/* Testimonials Carousel - Real LinkedIn Recommendations */}
           <Suspense fallback={<ComponentFallback className="w-full" height="h-80" />}>
