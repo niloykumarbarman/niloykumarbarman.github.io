@@ -16,10 +16,10 @@ export const metadata: Metadata = {
     title: "Professional Certifications | Niloy Kumar Barman",
     description: "Explore my professional certifications, demonstrating expertise and commitment to continuous learning in software development and cloud technologies.",
     type: "website",
-    url: "https://biswajitpanday.github.io/certifications",
+    url: "https://niloykumarbarman.github.io/certifications",
     images: [
       {
-        url: "https://biswajitpanday.github.io/assets/certificates/microsoft-certified-fundamentals-badge.svg",
+        url: "https://niloykumarbarman.github.io/assets/certificates/microsoft-certified-fundamentals-badge.svg",
         width: 400,
         height: 400,
         alt: "Microsoft Azure Fundamentals Certification",

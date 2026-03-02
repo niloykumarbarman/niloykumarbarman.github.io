@@ -46,9 +46,9 @@ const NAVIGATION_ITEMS: Array<{ name: string; href: string; dropdown?: Array<{ n
 
 // Social media links
 const SOCIAL_LINKS = [
-  { name: "GitHub", href: "https://github.com/biswajitpanday", icon: FaGithub },
-  { name: "Medium", href: "https://medium.com/@biswajitpanday", icon: FaMedium },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/biswajitpanday", icon: FaLinkedin },
+  { name: "GitHub", href: "https://github.com/niloykumarbarman", icon: FaGithub },
+  { name: "Medium", href: "https://medium.com/@niloykumarbarman", icon: FaMedium },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/niloy-barman-552634339/", icon: FaLinkedin },
 ];
 
 interface HeaderProps {
@@ -140,7 +140,7 @@ export default function Header({ projects, certifications, skillsHierarchy }: He
                 aria-label="Home"
               >
                 <div className="text-2xl font-semibold">
-                  Panday<span className="text-secondary-default">.</span>
+                  Niloy<span className="text-secondary-default">.</span>
                 </div>
               </Link>
 

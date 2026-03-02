@@ -13,7 +13,7 @@ interface CanonicalUrlProps {
  */
 const CanonicalUrl = ({ customPath }: CanonicalUrlProps) => {
   const pathname = usePathname();
-  const baseUrl = 'https://biswajitpanday.github.io';
+  const baseUrl = 'https://niloykumarbarman.github.io';
   const canonicalUrl = customPath ? `${baseUrl}${customPath}` : `${baseUrl}${pathname}`;
 
   // Using Script component to insert the canonical tag since Next.js App Router

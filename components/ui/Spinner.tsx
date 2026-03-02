@@ -171,7 +171,7 @@ export function PageSpinner({
           transition={{ duration: 0.3 }}
           className="text-4xl font-bold text-white"
         >
-          Panday<span className="text-secondary-default">.</span>
+          Niloy<span className="text-secondary-default">.</span>
         </motion.h1>
 
         {/* Spinner */}

@@ -201,7 +201,7 @@ export const ANIMATION_STRATEGY = {
 
 // SEO constants
 export const SEO = {
-  DEFAULT_TITLE: "Panday's Portfolio",
+  DEFAULT_TITLE: "Niloy's Portfolio",
   DEFAULT_DESCRIPTION: "Portfolio of Niloy Kumar Barman  - Full-Stack .NET Developer",
   SITE_URL: "https://niloykumarbarman.github.io",
   AUTHOR: "Niloy Kumar Barman",

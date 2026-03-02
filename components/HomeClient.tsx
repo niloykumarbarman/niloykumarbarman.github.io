@@ -91,7 +91,7 @@ const HomeClient = ({
   const heroBio = `Senior .NET Architect with ${totalExperience} delivering mid to enterprise grade applications. Currently at Optimizely, delivering solutions for global enterprise clients. Built SpireWiz, an AI tool achieving 80% time reduction and $180K annual business value. Microsoft Certified.`;
 
   // Dynamic resume URL (with fallback to default)
-  const resumeUrl = portfolioMetadata?.resumeUrl || "/assets/Biswajit_Panday_Resume.pdf";
+  const resumeUrl = portfolioMetadata?.resumeUrl || "/Niloy_Kumar_Barman_Resume.pdf";
 
   useEffect(() => {
     setPageLoadTime(Date.now());
