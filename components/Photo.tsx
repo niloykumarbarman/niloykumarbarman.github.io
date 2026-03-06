@@ -12,7 +12,7 @@ const Photo = () => {
         {/* Profile Image Layer - Overlays gradient */}
         <div className="absolute inset-0 rounded-full overflow-hidden">
           <Image
-            src="/assets/profile/profile-small.png"
+            src="/assets/profile/profile-small.jpeg"
             priority
             quality={90}
             fill
