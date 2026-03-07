@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     siteName: "Niloy Kumar Barman Portfolio",
     images: [
       {
-        url: "https://biswajitpanday.github.io/assets/social-preview.png",
+        url: "https://niloykumarbarman.github.io/assets/social-preview.png",
         width: 1200,
         height: 630,
         alt: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer | 2+ years supporting 20+ enterprise clients",
