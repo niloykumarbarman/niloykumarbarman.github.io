@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     title: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer",
     description: "10+ years supporting 20+ enterprise clients. Architecting scalable solutions and practical AI tools with measurable ROI. Expert in full-stack development and automation.",
     images: {
-      url: "https://biswajitpanday.github.io/assets/social-preview.png",
+      url: "https://niloykumarbarman.github.io/assets/social-preview.png",
       alt: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer",
       width: 1200,
       height: 630,
@@ -122,7 +122,7 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-capable': 'yes',
     'application-name': 'Niloy Kumar Barman Portfolio',
     'apple-mobile-web-app-title': 'Niloy Kumar Barman',
-    'og:image:secure_url': 'https://biswajitpanday.github.io/assets/social-preview.png',
+    'og:image:secure_url': 'https://niloykumarbarman.github.io/assets/social-preview.png',
     'article:author': 'Niloy Kumar Barman',
     'profile:first_name': 'Niloy Kumar',
     'profile:last_name': 'Barman',

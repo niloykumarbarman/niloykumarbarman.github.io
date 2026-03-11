@@ -22,30 +22,33 @@ interface SkillNode {
   children?: SkillNode[];
 }
 
-const TESTIMONIAL_NAME_REPLACEMENTS: Record<string, string> = {
-  "Biswajit Panday": "Niloy Kumar Barman",
-  "Biswajit": "Niloy",
-  "Md Aminul Hoque": "Aminul Sujon",
-};
+const PORTFOLIO_OWNER_NAME = "Niloy Kumar Barman";
+const PORTFOLIO_OWNER_FIRST_NAME = "Niloy";
 
-const TESTIMONIAL_COMPANY_REPLACEMENTS: Record<string, string> = {
-  "Pledge It": "Cyber Bit Bite",
+const TESTIMONIAL_AUTHOR_OVERRIDES: Record<string, { author: string; company?: string }> = {
+  "Senior Software Engineer::Pledge It": {
+    author: "Aminul Sujon",
+    company: "Cyber Bit Bite",
+  },
 };
 
 function normalizeTestimonials(testimonials: TestimonialData[]): TestimonialData[] {
   return testimonials.map((testimonial) => {
+    const overrideKey = `${testimonial.role}::${testimonial.company ?? ""}`;
+    const authorOverride = TESTIMONIAL_AUTHOR_OVERRIDES[overrideKey];
+    const usePortfolioOwnerName = testimonial.author.endsWith("Panday");
     let quote = testimonial.quote;
 
-    for (const [from, to] of Object.entries(TESTIMONIAL_NAME_REPLACEMENTS)) {
-      quote = quote.replaceAll(from, to);
+    if (usePortfolioOwnerName) {
+      const originalFirstName = testimonial.author.split(" ")[0];
+      quote = quote.replaceAll(testimonial.author, PORTFOLIO_OWNER_NAME);
+      quote = quote.replaceAll(originalFirstName, PORTFOLIO_OWNER_FIRST_NAME);
     }
 
     return {
       ...testimonial,
-      author: TESTIMONIAL_NAME_REPLACEMENTS[testimonial.author] ?? testimonial.author,
-      company: testimonial.company
-        ? (TESTIMONIAL_COMPANY_REPLACEMENTS[testimonial.company] ?? testimonial.company)
-        : testimonial.company,
+      author: authorOverride?.author ?? (usePortfolioOwnerName ? PORTFOLIO_OWNER_NAME : testimonial.author),
+      company: authorOverride?.company ?? testimonial.company,
       quote,
     };
   });

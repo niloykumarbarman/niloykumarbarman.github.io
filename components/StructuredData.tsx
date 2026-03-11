@@ -142,7 +142,7 @@ export const OrganizationSchema = () => {
         }
       ]
     },
-    image: ['https://biswajitpanday.github.io/assets/photo.webp']
+    image: ['https://niloykumarbarman.github.io/assets/photo.webp']
   };
 
   return (
@@ -171,7 +171,7 @@ export const generateWebPageSchema = (
     name: 'Niloy Kumar Barman - Portfolio',
     url: 'https://niloykumarbarman.github.io'
   },
-  image: images.length > 0 ? images : ['https://biswajitpanday.github.io/assets/photo.webp']
+  image: images.length > 0 ? images : ['https://niloykumarbarman.github.io/assets/photo.webp']
 });
 
 export default StructuredData; 
