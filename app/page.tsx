@@ -22,6 +22,35 @@ interface SkillNode {
   children?: SkillNode[];
 }
 
+const TESTIMONIAL_NAME_REPLACEMENTS: Record<string, string> = {
+  "Biswajit Panday": "Niloy Kumar Barman",
+  "Biswajit": "Niloy",
+  "Md Aminul Hoque": "Aminul Sujon",
+};
+
+const TESTIMONIAL_COMPANY_REPLACEMENTS: Record<string, string> = {
+  "Pledge It": "Cyber Bit Bite",
+};
+
+function normalizeTestimonials(testimonials: TestimonialData[]): TestimonialData[] {
+  return testimonials.map((testimonial) => {
+    let quote = testimonial.quote;
+
+    for (const [from, to] of Object.entries(TESTIMONIAL_NAME_REPLACEMENTS)) {
+      quote = quote.replaceAll(from, to);
+    }
+
+    return {
+      ...testimonial,
+      author: TESTIMONIAL_NAME_REPLACEMENTS[testimonial.author] ?? testimonial.author,
+      company: testimonial.company
+        ? (TESTIMONIAL_COMPANY_REPLACEMENTS[testimonial.company] ?? testimonial.company)
+        : testimonial.company,
+      quote,
+    };
+  });
+}
+
 /**
  * Homepage - Server Component
  *
@@ -52,7 +81,7 @@ export default async function HomePage() {
 
     portfolioMetadata = metadataData;
 
-    testimonials = testimonialData;
+    testimonials = normalizeTestimonials(testimonialData);
     certifications = certificationData;
     projects = projectData;
     timeline = timelineData;
