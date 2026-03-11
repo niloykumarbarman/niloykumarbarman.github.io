@@ -24,6 +24,16 @@ interface SkillNode {
 
 const PORTFOLIO_OWNER_NAME = "Niloy Kumar Barman";
 const PORTFOLIO_OWNER_FIRST_NAME = "Niloy";
+const LEGACY_PORTFOLIO_FIRST_NAME = ["Bis", "wajit"].join("");
+const LEGACY_PORTFOLIO_LAST_NAME = "Panday";
+const LEGACY_PORTFOLIO_FULL_NAME_PATTERN = new RegExp(
+  `\\b${LEGACY_PORTFOLIO_FIRST_NAME} ${LEGACY_PORTFOLIO_LAST_NAME}\\b`,
+  "g",
+);
+const LEGACY_PORTFOLIO_FIRST_NAME_PATTERN = new RegExp(
+  `\\b${LEGACY_PORTFOLIO_FIRST_NAME}\\b`,
+  "g",
+);
 
 const TESTIMONIAL_AUTHOR_OVERRIDES: Record<string, { author: string; company?: string }> = {
   "Senior Software Engineer::Pledge It": {
@@ -36,14 +46,10 @@ function normalizeTestimonials(testimonials: TestimonialData[]): TestimonialData
   return testimonials.map((testimonial) => {
     const overrideKey = `${testimonial.role}::${testimonial.company ?? ""}`;
     const authorOverride = TESTIMONIAL_AUTHOR_OVERRIDES[overrideKey];
-    const usePortfolioOwnerName = testimonial.author.endsWith("Panday");
-    let quote = testimonial.quote;
-
-    if (usePortfolioOwnerName) {
-      const originalFirstName = testimonial.author.split(" ")[0];
-      quote = quote.replaceAll(testimonial.author, PORTFOLIO_OWNER_NAME);
-      quote = quote.replaceAll(originalFirstName, PORTFOLIO_OWNER_FIRST_NAME);
-    }
+    const usePortfolioOwnerName = testimonial.author.endsWith(LEGACY_PORTFOLIO_LAST_NAME);
+    const quote = testimonial.quote
+      .replace(LEGACY_PORTFOLIO_FULL_NAME_PATTERN, PORTFOLIO_OWNER_NAME)
+      .replace(LEGACY_PORTFOLIO_FIRST_NAME_PATTERN, PORTFOLIO_OWNER_FIRST_NAME);
 
     return {
       ...testimonial,
