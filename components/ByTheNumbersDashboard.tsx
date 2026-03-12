@@ -13,7 +13,10 @@ import {
   FaGithub
 } from "@/lib/icons";
 import type { Project, Certification, TimelineEntry } from "@/types/api";
-import { calculateTotalExperience } from "@/helpers/utility";
+import {
+  calculateTotalCompaniesServed,
+  calculateTotalExperience,
+} from "@/helpers/utility";
 import { countAllTechnologies } from "@/lib/skillsDataTransformer";
 
 interface CountUpProps {
@@ -91,7 +94,7 @@ const ByTheNumbersDashboard: React.FC<ByTheNumbersDashboardProps> = ({
   const totalCertifications = certifications.filter(c => !c.isUpcoming).length;
   const totalTechnologies = countAllTechnologies(skills1, skills2);
   const totalExperience = calculateTotalExperience(timeline);
-  const totalCompanies = timeline.length;
+  const totalCompanies = calculateTotalCompaniesServed(timeline);
   const openSourceProjects = projects.filter(p => p.isOpenSource).length;
 
   // Extract numeric value from experience string (e.g., "10+ Years" -> 10)
@@ -245,3 +248,4 @@ const ByTheNumbersDashboard: React.FC<ByTheNumbersDashboardProps> = ({
 };
 
 export default ByTheNumbersDashboard;
+

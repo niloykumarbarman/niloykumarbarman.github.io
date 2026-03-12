@@ -44,6 +44,9 @@ const DEFAULT_HERO_PHRASES = [
   "I transform legacy into modern",
 ];
 
+const hasLegacyExperienceClaim = (value?: string) =>
+  Boolean(value && /\b10\+\s*years?\b|\b11\+\s*years?\b/i.test(value));
+
 // Lazy load only non-critical below-the-fold components
 const Socials = lazy(() => import("@/components/Socials"));
 const ByTheNumbersDashboard = lazy(() => import("@/components/ByTheNumbersDashboard"));
@@ -88,7 +91,6 @@ const HomeClient = ({
   const heroPhrases = DEFAULT_HERO_PHRASES;
   const heroTagline = "Junior .NET Architect & AI Solutions Engineer";
   const heroName = "Niloy Kumar Barman";
-  const heroBio = `Junior .NET Architect with 1 years delivering mid to enterprise grade applications. Currently at Optimizely, delivering solutions for global enterprise clients. Built SpireWiz, an AI tool achieving 80% time reduction and $180K annual business value. Microsoft Certified.`;
 
   // Dynamic resume URL (with fallback to default)
   const resumeUrl = portfolioMetadata?.resumeUrl || "/Niloy_Kumar_Barman_Resume.pdf";
@@ -115,7 +117,9 @@ const HomeClient = ({
 
   // Dynamic SEO metadata (with fallback to defaults)
   const seoTitle = portfolioMetadata?.seoTitle || "Niloy Kumar Barman - Junior .NET Architect & AI Solutions Engineer";
-  const seoDescription = portfolioMetadata?.metaDescription || `Junior .NET Architect with 1 years delivering mid to enterprise grade platforms. Currently at Optimizely, delivering solutions for global enterprise clients. Built SpireWiz, an AI tool achieving 80% time reduction and $180K annual business value. Microsoft Certified.`;
+  const seoDescription = !hasLegacyExperienceClaim(portfolioMetadata?.metaDescription) && portfolioMetadata?.metaDescription
+    ? portfolioMetadata.metaDescription
+    : `Junior .NET Architect with ${totalExperience} delivering mid to enterprise grade platforms. Currently at Optimizely, delivering solutions for global enterprise clients. Built SpireWiz, an AI tool achieving 80% time reduction and $180K annual business value. Microsoft Certified.`;
   const ogImage = portfolioMetadata?.seo?.ogImage || "https://niloykumarbarman.github.io/assets/profile/webp/niloy.webp";
   const twitterCard = portfolioMetadata?.seo?.twitterCard || "summary_large_image";
 
@@ -221,7 +225,7 @@ const HomeClient = ({
                 className="text-white/70 text-base leading-relaxed max-w-2xl mb-6 mx-auto xl:mx-0"
               >
                 Junior .NET Architect with{" "}
-                <span className="text-[#00BFFF] font-medium">1 years</span> delivering mid
+                <span className="text-[#00BFFF] font-medium">{totalExperience}</span> delivering mid
                 to enterprise grade applications. Currently at{" "}
                 <span className="text-[#00BFFF] font-medium">Optimizely</span> serving
                 global enterprise clients. Passionate about AI integration - built{" "}
@@ -400,3 +404,4 @@ const HomeClient = ({
 };
 
 export default HomeClient;
+

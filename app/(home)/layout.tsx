@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Niloy Kumar Barman - Full-Stack .NET Developer",
-  description: "Professional portfolio of Niloy Kumar Barman, a skilled Full-Stack .NET Developer with 10+ years experience in building modern web applications and cloud solutions.",
+  description: "Professional portfolio of Niloy Kumar Barman, a Full-Stack .NET Developer building modern web applications, cloud solutions, and practical AI tools.",
   keywords: [
     "Niloy Kumar Barman",
     "Full-Stack Developer", 
@@ -22,12 +22,12 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Niloy Kumar Barman - Full-Stack .NET Developer",
-    description: "Professional portfolio showcasing 10+ years of experience in .NET, React, and cloud technologies",
+    description: "Professional portfolio showcasing modern .NET, React, and cloud-focused engineering work",
     url: "https://niloykumarbarman.github.io",
   },
   twitter: {
     title: "Niloy Kumar Barman - Full-Stack .NET Developer",
-    description: "Professional portfolio showcasing 10+ years of experience in .NET, React, and cloud technologies",
+    description: "Professional portfolio showcasing modern .NET, React, and cloud-focused engineering work",
   },
 };
 
@@ -38,3 +38,4 @@ export default function HomeLayout({
 }) {
   return children;
 } 
+

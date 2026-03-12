@@ -8,6 +8,7 @@ import {
   v2Helpers,
 } from "@/lib/api-client";
 import { transformApiToSkillsData } from "@/lib/skillsDataTransformer";
+import { normalizeTimelineEntries } from "@/lib/timeline";
 import HomeClient from "@/components/HomeClient";
 import type { TestimonialData, Certification, Project, TimelineEntry } from "@/types/api";
 
@@ -93,7 +94,7 @@ export default async function HomePage() {
     testimonials = normalizeTestimonials(testimonialData);
     certifications = certificationData;
     projects = projectData;
-    timeline = timelineData;
+    timeline = normalizeTimelineEntries(timelineData);
 
     // Transform skills API data to SkillNode format (same as Skills page)
     const transformedSkills = transformApiToSkillsData(skillsData);
@@ -138,3 +139,4 @@ export default async function HomePage() {
     />
   );
 }
+

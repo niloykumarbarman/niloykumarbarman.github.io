@@ -48,7 +48,7 @@ const valueItems: ValueItem[] = [
     icon: FaRocket,
     title: "Full-Stack Expertise",
     description: "End-to-end development with",
-    highlight: "10+ years",
+    highlight: "modern product stacks",
     color: "text-orange-400",
     bgColor: "bg-orange-500/20"
   }
@@ -136,3 +136,4 @@ const ValueProposition: React.FC<ValuePropositionProps> = ({
 };
 
 export default ValueProposition;
+

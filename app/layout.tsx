@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     default: "Niloy Kumar Barman - Junior .NET Developer & AI Solutions Engineer",
     template: "%s | Niloy Kumar Barman"
   },
-  description: "10+ years of experience supporting 20+ enterprise clients. Specialized in architecting scalable solutions and practical AI tools that deliver continuous ROI and measurable business impact. Expert in full-stack development and automation.",
+  description: "Portfolio of Niloy Kumar Barman, a Junior .NET Developer and AI Solutions Engineer building scalable .NET, React, and AI-powered solutions for enterprise clients.",
   keywords: [
     "Niloy Kumar Barman",
     ".NET Architect",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Niloy Kumar Barman - Junior .NET Developer & AI Solutions Engineer",
-    description: "10+ years of experience supporting 20+ enterprise clients. Specialized in architecting scalable solutions and practical AI tools that deliver continuous ROI and measurable business impact. Expert in full-stack development and automation.",
+    description: "Portfolio of Niloy Kumar Barman, a Junior .NET Developer and AI Solutions Engineer building scalable .NET, React, and AI-powered solutions for enterprise clients.",
     url: "https://niloykumarbarman.github.io",
     siteName: "Niloy Kumar Barman Portfolio",
     images: [
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
         url: "https://niloykumarbarman.github.io/assets/social-preview.png",
         width: 1200,
         height: 630,
-        alt: "Niloy Kumar Barman - Junior .NET Developer & AI Solutions Engineer | 2+ years supporting 20+ enterprise clients",
+        alt: "Niloy Kumar Barman - Junior .NET Developer & AI Solutions Engineer",
         type: "image/png",
       },
     ],
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     site: "@niloykumarbarman",
     creator: "@niloykumarbarman",
     title: "Niloy Kumar Barman - Junior .NET Developer & AI Solutions Engineer",
-    description: "10+ years supporting 20+ enterprise clients. Architecting scalable solutions and practical AI tools with measurable ROI. Expert in full-stack development and automation.",
+    description: "Portfolio of Niloy Kumar Barman, a Junior .NET Developer and AI Solutions Engineer building scalable .NET, React, and AI-powered solutions for enterprise clients.",
     images: {
       url: "https://niloykumarbarman.github.io/assets/social-preview.png",
       alt: "Niloy Kumar Barman - Junior .NET Developer & AI Solutions Engineer",
@@ -186,3 +186,4 @@ export default async function RootLayout({
     </html>
   );
 }
+

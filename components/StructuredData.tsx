@@ -30,7 +30,7 @@ export const PersonSchema = () => {
     "@type": "Person",
     name: "Niloy Kumar Barman",
     jobTitle: "Full-Stack .NET Developer",
-    description: "Professional Full-Stack .NET Developer with 10+ years of experience specializing in scalable applications, cloud solutions with .NET, React, Azure & AWS.",
+    description: "Professional Full-Stack .NET Developer specializing in scalable applications, cloud solutions, and practical AI integrations with .NET, React, Azure, and AWS.",
     url: "https://niloykumarbarman.github.io",
     sameAs: [
       "https://github.com/niloykumarbarman",
@@ -175,3 +175,4 @@ export const generateWebPageSchema = (
 });
 
 export default StructuredData; 
+

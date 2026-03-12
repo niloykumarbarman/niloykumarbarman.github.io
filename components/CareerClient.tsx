@@ -1,5 +1,6 @@
 "use client";
 import {
+  calculateTotalCompaniesServed,
   calculateTotalExperience,
 } from "@/helpers/utility";
 import type { TimelineEntry } from "@/types/api";
@@ -23,7 +24,7 @@ interface CareerClientProps {
 const CareerClient = ({ timeline }: CareerClientProps) => {
   const timeLineItems = timeline;
   const totalExperience = calculateTotalExperience(timeLineItems);
-  const totalCompanies = timeLineItems.length;
+  const totalCompanies = calculateTotalCompaniesServed(timeLineItems);
   const leadershipRoles = timeLineItems.filter(item =>
     item.position.toLowerCase().includes('lead') ||
     item.position.toLowerCase().includes('senior')
@@ -178,3 +179,4 @@ const CareerClient = ({ timeline }: CareerClientProps) => {
 };
 
 export default CareerClient;
+

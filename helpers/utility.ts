@@ -1,30 +1,82 @@
-export const calculateDuration = (startDate: Date, endDate: Date) => {
-  const start = new Date(startDate);
-  const end = new Date(endDate);
-  
-  let years = end.getFullYear() - start.getFullYear();
-  let months = end.getMonth() - start.getMonth();
-  
-  // Adjust if we haven't reached the day of the month yet
-  if (end.getDate() < start.getDate()) {
+const DAY_IN_MS = 24 * 60 * 60 * 1000;
+
+const normalizeToDay = (value: Date | string) => {
+  const date = new Date(value);
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+};
+
+const isSameDay = (left: Date, right: Date) =>
+  left.getFullYear() === right.getFullYear() &&
+  left.getMonth() === right.getMonth() &&
+  left.getDate() === right.getDate();
+
+const getExperienceEndExclusive = (value: Date | string) => {
+  const normalizedDate = normalizeToDay(value);
+  const today = normalizeToDay(new Date());
+
+  if (isSameDay(normalizedDate, today)) {
+    return normalizedDate;
+  }
+
+  return new Date(normalizedDate.getTime() + DAY_IN_MS);
+};
+
+const getExperienceParts = (startDate: Date | string, endDate: Date | string) => {
+  const start = normalizeToDay(startDate);
+  const endExclusive = getExperienceEndExclusive(endDate);
+
+  if (endExclusive <= start) {
+    return { years: 0, months: 0 };
+  }
+
+  let years = endExclusive.getFullYear() - start.getFullYear();
+  let months = endExclusive.getMonth() - start.getMonth();
+
+  if (endExclusive.getDate() < start.getDate()) {
     months--;
   }
-  
-  // Handle negative months
+
   if (months < 0) {
     years--;
     months += 12;
   }
-  
-  // Add 1 to include the current month in the count
-  months++;
-  
-  // Recalculate years and months
-  if (months >= 12) {
-    years += Math.floor(months / 12);
-    months = months % 12;
-  }
-  
+
+  return {
+    years: Math.max(years, 0),
+    months: Math.max(months, 0),
+  };
+};
+
+const mergeExperienceIntervals = (
+  positions: Array<{ startDate: Date | string; endDate?: Date | string }>
+) => {
+  const sortedIntervals = positions
+    .map((position) => ({
+      start: normalizeToDay(position.startDate),
+      endExclusive: getExperienceEndExclusive(position.endDate ?? new Date()),
+    }))
+    .filter(({ start, endExclusive }) => endExclusive > start)
+    .sort((left, right) => left.start.getTime() - right.start.getTime());
+
+  return sortedIntervals.reduce<Array<{ start: Date; endExclusive: Date }>>((merged, interval) => {
+    const lastInterval = merged[merged.length - 1];
+
+    if (!lastInterval || interval.start.getTime() > lastInterval.endExclusive.getTime()) {
+      merged.push({ ...interval });
+      return merged;
+    }
+
+    if (interval.endExclusive.getTime() > lastInterval.endExclusive.getTime()) {
+      lastInterval.endExclusive = interval.endExclusive;
+    }
+
+    return merged;
+  }, []);
+};
+
+export const calculateDuration = (startDate: Date, endDate: Date) => {
+  const { years, months } = getExperienceParts(startDate, endDate);
+
   if (years === 0 && months === 0) {
     return "Less than 1 month";
   } else if (years === 0) {
@@ -35,7 +87,6 @@ export const calculateDuration = (startDate: Date, endDate: Date) => {
     return `${years} year${years > 1 ? 's' : ''}, ${months} month${months > 1 ? 's' : ''}`;
   }
 };
-
 
 export const calculateFromTo = (startDate: Date, endDate: Date) => {
     const startYear = startDate.getFullYear();
@@ -60,36 +111,14 @@ export const getDuration = (startDate: Date, endDate: Date) => {
 };
 
 export const calculateTotalExperience = (positions: Array<{startDate: Date | string, endDate?: Date | string}>) => {
-  let totalMonths = 0;
-  
-  positions.forEach(position => {
-    const start = new Date(position.startDate);
-    const end = position.endDate ? new Date(position.endDate) : new Date(); // V2: Use current date if endDate not provided
-    
-    let years = end.getFullYear() - start.getFullYear();
-    let months = end.getMonth() - start.getMonth();
-    
-    // Adjust if we haven't reached the day of the month yet
-    if (end.getDate() < start.getDate()) {
-      months--;
-    }
-    
-    // Handle negative months
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-    
-    // Add 1 to include the current month in the count
-    months++;
-    
-    // Add total months for this position
-    totalMonths += years * 12 + months;
-  });
-  
+  const totalMonths = mergeExperienceIntervals(positions).reduce((monthsTotal, interval) => {
+    const { years, months } = getExperienceParts(interval.start, interval.endExclusive);
+    return monthsTotal + years * 12 + months;
+  }, 0);
+
   const displayYears = Math.floor(totalMonths / 12);
   const displayMonths = totalMonths % 12;
-  
+
   if (displayYears === 0) {
     return `${displayMonths} month${displayMonths > 1 ? 's' : ''}`;
   } else if (displayMonths === 0) {
@@ -103,3 +132,4 @@ export const calculateTotalCompaniesServed = (positions: Array<{company: string}
   const uniqueCompanies = new Set(positions.map(position => position.company));
   return uniqueCompanies.size;
 };
+

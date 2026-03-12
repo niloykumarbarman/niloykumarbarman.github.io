@@ -13,7 +13,7 @@ interface SocialPreviewProps {
 
 const SocialPreviewGenerator = ({
   title = "Niloy Kumar Barman - Full-Stack .NET Developer & Cloud Solutions Expert",
-  description = "Expert Full-Stack .NET Developer with 10+ years experience. Specializing in scalable applications, cloud solutions with .NET, React, Azure & AWS. Microsoft Certified.",
+  description = "Full-Stack .NET Developer specializing in scalable applications, cloud solutions, and practical AI integrations with .NET, React, Azure, and AWS. Microsoft Certified.",
   image = "niloykumarbarman.github.io/assets/profile/webp/niloy.webp",
   url = "https://niloykumarbarman.github.io",
   type = "website",
@@ -63,3 +63,4 @@ const SocialPreviewGenerator = ({
 };
 
 export default SocialPreviewGenerator; 
+
