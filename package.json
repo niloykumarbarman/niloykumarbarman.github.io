@@ -19,18 +19,11 @@
   ],
   "author": "Niloy Kumar Barman",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "analyze": "ANALYZE=true npm run build",
-    "analyze-motion": "node scripts/analyze-motion-usage.js",
-    "test-performance": "node scripts/test-animation-performance.js",
-    "optimize": "node scripts/optimize-images.js",
-    "fetch-github": "node scripts/fetch-github-data.js",
-    "sitemap": "node scripts/generate-sitemap.js",
-    "prebuild": "npm run sitemap"
-  },
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint"
+},
   "homepage": "https://niloykumarbarman.github.io",
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
