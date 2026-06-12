@@ -1,0 +1,131 @@
+import {
+  fetchTestimonials,
+  fetchCertifications,
+  fetchTimeline,
+  fetchSkillHierarchy,
+  fetchPortfolioMetadata,
+  v2Helpers,
+} from "@/lib/api-client";
+import { getProjectsWithFallback } from "@/lib/projectsWithFallback";
+import { transformApiToSkillsData } from "@/lib/skillsDataTransformer";
+import HomeClient from "@/components/HomeClient";
+import type { TestimonialData, Certification, Project, TimelineEntry } from "@/types/api";
+
+interface SkillNode {
+  name: string;
+  metadata?: {
+    icon: string;
+    level?: "Expert" | "Advanced" | "Intermediate" | "Familiar";
+    yearsOfExperience?: number;
+    lastUsed?: string;
+  };
+  children?: SkillNode[];
+}
+
+/**
+ * Homepage - Server Component
+ *
+ * Fetches testimonials, certifications, projects, timeline, and skills from portfolio-admin API at build time (SSG).
+ * Transforms skills data to match SkillNode format for proper technology counting.
+ * Passes data to client component for interactive features.
+ */
+export default async function HomePage() {
+  let testimonials: TestimonialData[] = [];
+  let featuredCertification: Certification | null = null;
+  let projects: Project[] = [];
+  let certifications: Certification[] = [];
+  let timeline: TimelineEntry[] = [];
+  let skills1: SkillNode = { name: "Skills", children: [] };
+  let skills2: SkillNode = { name: "Skills", children: [] };
+  let portfolioMetadata: any = { displaySettings: { showLookingForSection: false } };
+
+  // Projects are fetched separately so unrelated failures (e.g., testimonials)
+  // don't wipe out the local project fallback.
+  projects = await getProjectsWithFallback();
+
+  try {
+    // Fetch all data from admin API in parallel
+    const [testimonialData, certificationData, timelineData, skillsData, metadataData] = await Promise.all([
+      fetchTestimonials(),
+      Promise.resolve([{
+        _id: "ibm-devops-2026",
+        name: "Introduction to DevOps",
+        issuer: "IBM",
+        platform: "Coursera",
+        date: "2026-04-11",
+        date: "2026-04-11",
+        credentialUrl: "https://coursera.org/verify/GU2OVTLZZE81",
+        image: "/assets/certificates/webp/IBM.pdf",
+        description: "Learned DevOps principles, practices, and tools authorized by IBM.",
+        skills: ["DevOps", "CI/CD", "Agile", "IBM"],
+        featured: true,
+        status: "active",
+        isUpcoming: false
+      }]),
+      fetchTimeline(),
+      fetchSkillHierarchy(),
+      fetchPortfolioMetadata(),
+    ]);
+
+    portfolioMetadata = metadataData;
+
+    testimonials = testimonialData;
+    certifications = [{ _id: "ibm-1", name: "Introduction to DevOps", issuer: "IBM", date: "2026-04-11", credentialId: "GU2OVTLZZE81", credentialUrl: "https://coursera.org/verify/GU2OVTLZZE81", image: "/assets/certificates/webp/IBM.pdf", skills: ["DevOps", "CI/CD", "Agile"], featured: true, showByDefault: true, status: "active", isUpcoming: false, order: 1 }];
+    timeline = timelineData;
+
+    // Transform skills API data to SkillNode format (same as Skills page)
+    const transformedSkills = transformApiToSkillsData(skillsData);
+    skills1 = transformedSkills.skills1;
+    skills2 = transformedSkills.skills2;
+
+    // V2: Sort testimonials by order field (lower order = higher priority)
+    testimonials = testimonials.sort((a, b) => {
+      const aOrder = v2Helpers.getTestimonialOrder(a);
+      const bOrder = v2Helpers.getTestimonialOrder(b);
+      return aOrder - bOrder;
+    });
+
+    // Get the most recent featured certification
+    const featuredCerts = certifications
+      .filter(cert => cert.featured && !cert.isUpcoming)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    featuredCertification = featuredCerts[0] || null;
+  } catch (error) {
+    console.error('Failed to fetch homepage data:', error);
+    // Fallback to defaults (projects are already populated from getProjectsWithFallback)
+    testimonials = [];
+    featuredCertification = null;
+    certifications = [
+      {
+        _id: "ibm-devops-2026",
+        name: "Introduction to DevOps",
+        issuer: "IBM",
+        platform: "Coursera",
+        date: "2026-04-11",
+        credentialUrl: "https://coursera.org/verify/GU2OVTLZZE81",
+        image: "/assets/certificates/webp/IBM.pdf",
+        description: "Learned DevOps principles, practices, and tools authorized by IBM.",
+        skills: ["DevOps", "CI/CD", "Agile", "IBM"],
+        featured: true,
+        status: "active"
+      }
+    ];
+    timeline = [];
+    skills1 = { name: "Skills", children: [] };
+    skills2 = { name: "Skills", children: [] };
+  }
+
+  return (
+    <HomeClient
+      testimonials={testimonials}
+      featuredCertification={featuredCertification}
+      projects={projects}
+      certifications={certifications}
+      timeline={timeline}
+      skills1={skills1}
+      skills2={skills2}
+      portfolioMetadata={portfolioMetadata}
+    />
+  );
+}
