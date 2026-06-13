@@ -429,7 +429,7 @@ const Contact = () => {
         throw new Error('PageClip API key not found. Please check your environment variables.');
       }
 
-      const response = await fetch(`https://send.pageclip.co/${PAGECLIP_API_KEY}/contact`, {
+      const response = await fetch(`https://send.pageclip.co/v1/${PAGECLIP_API_KEY}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
