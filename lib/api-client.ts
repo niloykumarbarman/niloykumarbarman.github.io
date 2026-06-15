@@ -49,6 +49,7 @@ async function fetchAPI<T>(endpoint: string): Promise<T> {
 
   try {
     const response = await fetch(url, {
+      mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -212,6 +213,7 @@ export async function fetchBlogPosts(params?: {
 export async function fetchPortfolioMetadata() {
   try {
     const response = await fetch(`${API_BASE_URL}/api/public/metadata`, {
+      mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },

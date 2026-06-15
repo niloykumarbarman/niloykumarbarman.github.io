@@ -48,16 +48,15 @@ export default async function HomePage() {
     const [testimonialData, certificationData, timelineData, skillsData, metadataData] = await Promise.all([
       fetchTestimonials(),
       Promise.resolve([{
-        _id: "ibm-devops-2026",
-        name: "Introduction to DevOps",
-        issuer: "IBM",
+        _id: "aws-csaa-examprep",
+        name: "Exam Prep: AWS Certified Solutions Architect - Associate",
+        issuer: "Amazon Web Services",
         platform: "Coursera",
-        date: "2026-04-11",
-        date: "2026-04-11",
-        credentialUrl: "https://coursera.org/verify/GU2OVTLZZE81",
-        image: "/assets/certificates/webp/IBM.pdf",
-        description: "Learned DevOps principles, practices, and tools authorized by IBM.",
-        skills: ["DevOps", "CI/CD", "Agile", "IBM"],
+        date: "2026-06-15",
+        credentialUrl: "https://coursera.org/verify/HMY0BPJMROUB",
+        image: "/assets/certificates/webp/Coursera HG80LDK3GVBH_page-0001 (1).jpg",
+        description: "Prepared for the AWS Certified Solutions Architect - Associate exam, covering core AWS services and cloud architecture best practices.",
+        skills: ["AWS", "Cloud Architecture", "Solutions Architecture"],
         featured: true,
         status: "active",
         isUpcoming: false
@@ -68,9 +67,8 @@ export default async function HomePage() {
     ]);
 
     portfolioMetadata = metadataData;
-
+    certifications = certificationData;
     testimonials = testimonialData;
-    certifications = [{ _id: "ibm-1", name: "Introduction to DevOps", issuer: "IBM", date: "2026-04-11", credentialId: "GU2OVTLZZE81", credentialUrl: "https://coursera.org/verify/GU2OVTLZZE81", image: "/assets/certificates/webp/IBM.pdf", skills: ["DevOps", "CI/CD", "Agile"], featured: true, showByDefault: true, status: "active", isUpcoming: false, order: 1 }];
     timeline = timelineData;
 
     // Transform skills API data to SkillNode format (same as Skills page)
@@ -98,15 +96,15 @@ export default async function HomePage() {
     featuredCertification = null;
     certifications = [
       {
-        _id: "ibm-devops-2026",
-        name: "Introduction to DevOps",
-        issuer: "IBM",
+        _id: "aws-csaa-examprep",
+        name: "Exam Prep: AWS Certified Solutions Architect - Associate",
+        issuer: "Amazon Web Services",
         platform: "Coursera",
-        date: "2026-04-11",
-        credentialUrl: "https://coursera.org/verify/GU2OVTLZZE81",
-        image: "/assets/certificates/webp/IBM.pdf",
-        description: "Learned DevOps principles, practices, and tools authorized by IBM.",
-        skills: ["DevOps", "CI/CD", "Agile", "IBM"],
+        date: "2026-06-15",
+        credentialUrl: "https://coursera.org/verify/HMY0BPJMROUB",
+        image: "/assets/certificates/webp/Coursera HG80LDK3GVBH_page-0001 (1).jpg",
+        description: "Prepared for the AWS Certified Solutions Architect - Associate exam, covering core AWS services and cloud architecture best practices.",
+        skills: ["AWS", "Cloud Architecture", "Solutions Architecture"],
         featured: true,
         status: "active"
       }

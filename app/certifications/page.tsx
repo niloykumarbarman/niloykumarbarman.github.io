@@ -4,6 +4,21 @@ import type { Certification } from "@/types/api";
 export default async function CertificationsPage() {
   const certifications: Certification[] = [
     {
+      _id: "aws-csaa-examprep",
+      name: "Exam Prep: AWS Certified Solutions Architect - Associate",
+      issuer: "Amazon Web Services",
+      date: "2026-06-15",
+      credentialId: "HMY0BPJMROUB",
+      link: "https://coursera.org/verify/HMY0BPJMROUB",
+      image: "/assets/certificates/webp/Coursera HG80LDK3GVBH_page-0001 (1).jpg",
+      skills: ["AWS", "Cloud Architecture", "Solutions Architecture"],
+      featured: true,
+      showByDefault: true,
+      status: "active",
+      isUpcoming: false,
+      order: 1,
+    },
+    {
       _id: "ibm-devops",
       name: "Introduction to DevOps",
       issuer: "IBM",
@@ -16,7 +31,7 @@ export default async function CertificationsPage() {
       showByDefault: true,
       status: "active",
       isUpcoming: false,
-      order: 1
+      order: 2
     },
     {
       _id: "ibm-software-eng",
