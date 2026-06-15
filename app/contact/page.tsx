@@ -107,7 +107,7 @@ const validateForm = (data: FormData) => {
 // Fallback default values (used if API fails or data is not available)
 const DEFAULT_CONTACT_INFO = {
   phone: "+880 1766644023",
-  email: "niloybarman829@gmail.com",
+  email: "niloykumarbarman829@gmail.com",
   teams: "niloykumarbarman@live.com",
   location: "Dhaka, Bangladesh",
 };
@@ -197,7 +197,7 @@ const Contact = () => {
   useEffect(() => {
     const loadMetadata = async () => {
       try {
-        throw new Error("use fallback");
+        const data = await fetchPortfolioMetadata();
         setPortfolioMetadata(data);
       } catch (error) {
         console.error('Failed to load portfolio metadata:', error);
@@ -461,7 +461,7 @@ const Contact = () => {
       }
     } catch (error) {
       setSubmitStatus('error');
-      setSubmitMessage('Something went wrong. Please try again or contact me directly via email (niloybarman829@gmail.com).');
+      setSubmitMessage('Something went wrong. Please try again or contact me directly via email (niloykumarbarman829@gmail.com).');
       console.error('Form submission error:', error);
     } finally {
       setIsSubmitting(false);
