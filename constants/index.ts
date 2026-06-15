@@ -212,8 +212,8 @@ export const SOCIAL_LINKS = {
   GITHUB: "https://github.com/Niloy Kumar Barman",
   LINKEDIN: "https://linkedin.com/in/Niloy Kumar Barman",
   EMAIL: "আপনার_gmail@gmail.com",
-  PHONE: "+880 1766644023",
-  WHATSAPP: "+880 1766644023",
+  PHONE: "+880 1766644823",
+  WHATSAPP: "+880 1766644823",
   TEAMS: "Niloy Kumar Barman@live.com",
 } as const;
 

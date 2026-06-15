@@ -46,9 +46,9 @@ const NAVIGATION_ITEMS: Array<{ name: string; href: string; dropdown?: Array<{ n
 
 // Social media links
 const SOCIAL_LINKS = [
-  { name: "GitHub", href: "https://github.com/niloykumarbarman", icon: FaGithub },
-  { name: "Medium", href: "https://medium.com/@niloykumarbarman", icon: FaMedium },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/niloykumarbarman", icon: FaLinkedin },
+  { name: "GitHub", href: "আপনার_github_link", icon: FaGithub },
+  { name: "Medium", href: "আপনার_medium_link", icon: FaMedium },
+  { name: "LinkedIn", href: "আপনার_linkedin_link", icon: FaLinkedin },
 ];
 
 interface HeaderProps {

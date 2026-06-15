@@ -23,8 +23,8 @@ export const personSchema = {
     addressLocality: "Dhaka",
     addressCountry: "Bangladesh"
   },
-  email: "niloybarman829@gmail.com",
-  telephone: "+880 1766644023",
+  email: "niloykumarbarman829@gmail.com",
+  telephone: "+880 1766644823",
   knowsAbout: [
     ".NET Development",
     "Enterprise Architecture",

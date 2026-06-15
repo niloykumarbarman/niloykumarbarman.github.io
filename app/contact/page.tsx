@@ -197,7 +197,7 @@ const Contact = () => {
   useEffect(() => {
     const loadMetadata = async () => {
       try {
-        const data = await fetchPortfolioMetadata();
+        throw new Error("use fallback");
         setPortfolioMetadata(data);
       } catch (error) {
         console.error('Failed to load portfolio metadata:', error);
