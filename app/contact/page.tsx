@@ -6,7 +6,7 @@ import { PERFORMANCE_VARIANTS } from "@/constants";
 import { useState } from "react";
 import FormSection from "@/components/FormSection";
 import BackgroundElements from "@/components/BackgroundElements";
-import { fetchPortfolioMetadata } from "@/lib/api-client";
+
 
 // Import icons from centralized Iconify library
 // Note: Iconify loads icons on-demand, so no need for React.lazy
