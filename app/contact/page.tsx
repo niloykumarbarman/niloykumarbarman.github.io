@@ -122,7 +122,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
-  const [portfolioMetadata, setPortfolioMetadata] = useState<any>(null);
+  const portfolioMetadata = null;
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -195,16 +195,6 @@ const Contact = () => {
 
   // Fetch portfolio metadata for contact info
   useEffect(() => {
-    const loadMetadata = async () => {
-      try {
-        const data = await fetchPortfolioMetadata();
-        setPortfolioMetadata(data);
-      } catch (error) {
-        console.error('Failed to load portfolio metadata:', error);
-        // Fallback to hardcoded values if API fails
-      }
-    };
-    loadMetadata();
   }, []);
 
   // Auto-dismiss success message after 5 seconds
