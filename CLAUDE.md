@@ -4,25 +4,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a professional portfolio website for Biswajit Panday, built with Next.js 15, TypeScript, and Tailwind CSS. The site features a modern glassmorphism design with smooth animations and comprehensive SEO optimization. It's configured for static export and deployment to GitHub Pages.
+This is a professional portfolio website for Niloy Kumar Barman, built with Next.js 15, TypeScript, and Tailwind CSS. The site features a modern glassmorphism design with smooth animations and comprehensive SEO optimization. It's configured for static export and deployment to GitHub Pages.
 
 ### Multi-Repository Architecture
 
 This portfolio project consists of **two separate repositories**:
 
-#### 1. Frontend Repository (`biswajitpanday.github.io`)
+#### 1. Frontend Repository (`niloykumarbarman.github.io`)
 - **Stack:** Next.js 15, React 19, TypeScript, Tailwind CSS
 - **Deployment:** GitHub Pages (static export)
-- **Location:** `biswajitpanday.github.io/`
-- **Repository:** https://github.com/biswajitpanday/biswajitpanday.github.io
+- **Location:** `niloykumarbarman.github.io/`
+- **Repository:** https://github.com/niloykumarbarman/niloykumarbarman.github.io
 - **Purpose:** Portfolio website with AI chatbot UI component
-- **Live URL:** https://biswajitpanday.github.io
+- **Live URL:** https://niloykumarbarman.github.io
 
 #### 2. Chatbot API Repository (`portfolio-chatbot-api`)
 - **Stack:** Vercel Serverless Functions, Node.js, TypeScript, Google Gemini AI
 - **Deployment:** Vercel (free tier)
-- **Location:** `biswajitpanday-portfolio-chatbot/` (local development folder)
-- **Repository:** https://github.com/biswajitpanday/portfolio-chatbot-api
+- **Location:** `niloykumarbarman-portfolio-chatbot/` (local development folder)
+- **Repository:** https://github.com/niloykumarbarman/portfolio-chatbot-api
 - **Purpose:** AI chatbot backend with rate limiting, CORS security, and AI integration
 - **API Endpoint:** Set in `NEXT_PUBLIC_CHATBOT_API_URL` environment variable
 

@@ -92,7 +92,17 @@ export default async function HomePage() {
   } catch (error) {
     console.error('Failed to fetch homepage data:', error);
     // Fallback to defaults (projects are already populated from getProjectsWithFallback)
-    testimonials = [];
+    testimonials = [
+      {
+        _id: "testimonial-1",
+        quote: "Niloy Kumar Barman is an outstanding individual who quickly adapted to our work processes. He delivered his tasks flawlessly and always maintained a positive attitude.",
+        author: "Md Aminul Hoque",
+        role: "Senior Software Engineer",
+        company: "Pledge It",
+        approved: true,
+        order: 1
+      }
+    ];
     featuredCertification = null;
     certifications = [
       {

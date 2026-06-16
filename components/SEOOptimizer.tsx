@@ -96,31 +96,31 @@ const SEOOptimizer = () => {
         "name": "What technologies does Niloy Kumar Barman specialize in?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Biswajit specializes in .NET Core, React, TypeScript, Azure, AWS, SQL Server, MongoDB, and modern web development frameworks with over 10 years of experience."
+          "text": "Niloy Kumar Barman specializes in .NET Core, React, TypeScript, Azure, AWS, SQL Server, MongoDB, and modern web development frameworks with over 10 years of experience."
         }
       },
       {
         "@type": "Question",
-        "name": "What types of projects does Biswajit work on?",
+        "name": "What types of projects does Niloy Kumar Barman work on?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Biswajit works on full-stack web applications, cloud solutions, enterprise software, API development, database design, and DevOps implementations."
+          "text": "Niloy Kumar Barman works on full-stack web applications, cloud solutions, enterprise software, API development, database design, and DevOps implementations."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Biswajit available for freelance projects?",
+        "name": "Is Niloy Kumar Barman available for freelance projects?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, Biswajit is available for consulting and freelance projects. Contact through the portfolio website for project inquiries and collaboration opportunities."
+          "text": "Yes, Niloy Kumar Barman is available for consulting and freelance projects. Contact through the portfolio website for project inquiries and collaboration opportunities."
         }
       },
       {
         "@type": "Question",
-        "name": "What certifications does Biswajit hold?",
+        "name": "What certifications does Niloy Kumar Barman hold?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Biswajit holds Microsoft Azure Fundamentals certification and multiple professional development certifications in software development and cloud technologies."
+          "text": "Niloy Kumar Barman holds Microsoft Azure Fundamentals certification and multiple professional development certifications in software development and cloud technologies."
         }
       }
     ]

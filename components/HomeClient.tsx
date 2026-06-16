@@ -88,9 +88,9 @@ const HomeClient = ({
 
   // Hero section content (static)
   const heroPhrases = DEFAULT_HERO_PHRASES;
-  const heroTagline = "Senior .NET Architect & AI Solutions Engineer";
+  const heroTagline = ".NET Architect & AI Solutions Engineer";
   const heroName = "Niloy Kumar Barman";
-  const heroBio = `Senior .NET Architect with ${totalExperience} delivering mid to enterprise grade applications. Currently at Optimizely, delivering solutions for global enterprise clients. Recently launched DevSpace — a free Windows desktop app that centralizes every developer project. Also built SpireWiz, an AI tool achieving 80% time reduction and $180K annual business value. Microsoft Certified.`;
+  const heroBio = ` .NET Architect with $yearly delivering mid to enterprise grade applications. Currently at company, delivering solutions for global enterprise clients. Recently launched DevSpace — a free Windows desktop app that centralizes every developer project. Also built SpireWiz, an AI tool achieving 80% time reduction and $180K annual business value. Microsoft Certified.`;
 
   // Dynamic resume URL (with fallback to default)
   const resumeUrl = portfolioMetadata?.resumeUrl || "/assets/Niloy_Kumar_Barman_Resume.pdf";
@@ -120,8 +120,8 @@ const HomeClient = ({
   };
 
   // Dynamic SEO metadata (with fallback to defaults)
-  const seoTitle = portfolioMetadata?.seoTitle || "Niloy Kumar Barman - Senior .NET Architect & AI Solutions Engineer";
-  const seoDescription = portfolioMetadata?.metaDescription || `Senior .NET Architect with ${totalExperience} delivering mid to enterprise grade platforms. Currently at Optimizely. Creator of DevSpace — a free Windows desktop app for centralizing developer projects (launched April 2026) — and SpireWiz, an AI tool achieving 80% time reduction and $180K annual business value. Microsoft Certified.`;
+  const seoTitle = portfolioMetadata?.seoTitle || "Niloy Kumar Barman -  .NET Architect & AI Solutions Engineer";
+  const seoDescription = portfolioMetadata?.metaDescription || `.NET Architect with ${totalExperience} delivering mid to enterprise grade platforms. Currently at Optimizely. Creator of DevSpace — a free Windows desktop app for centralizing developer projects (launched April 2026) — and SpireWiz, an AI tool achieving 80% time reduction and $180K annual business value. Microsoft Certified.`;
   const ogImage = portfolioMetadata?.seo?.ogImage || "https://niloykumarbarman.github.io/assets/profile/profile-large.webp";
   const twitterCard = portfolioMetadata?.seo?.twitterCard || "summary_large_image";
 
@@ -226,10 +226,10 @@ const HomeClient = ({
                 data-testid="home-description"
                 className="text-white/70 text-base leading-relaxed max-w-2xl mb-6 mx-auto xl:mx-0"
               >
-                Senior .NET Architect with{" "}
-                <span className="text-[#00BFFF] font-medium">{totalExperience}</span> delivering mid
+                .NET Architect with{" "}
+                <span className="text-[#00BFFF] font-medium">yearly</span> delivering mid
                 to enterprise grade applications. Currently at{" "}
-                <span className="text-[#00BFFF] font-medium">Optimizely</span> serving
+                <span className="text-[#00BFFF] font-medium">company</span> serving
                 global enterprise clients. Recently launched{" "}
                 <Link href="/devspace" className="text-purple-400 font-medium hover:text-purple-300 underline-offset-4 hover:underline">DevSpace</Link>{" "}
                 — a free Windows desktop app that centralizes developer projects, credentials, and the full git workflow. Also built{" "}

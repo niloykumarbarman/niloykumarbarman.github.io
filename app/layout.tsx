@@ -124,8 +124,8 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-title': 'Niloy Kumar Barman',
     'og:image:secure_url': 'https://niloykumarbarman.github.io/assets/social-preview.webp',
     'article:author': 'Niloy Kumar Barman',
-    'profile:first_name': 'Biswajit',
-    'profile:last_name': 'Panday',
+    'profile:first_name': 'Niloy Kumar',
+    'profile:last_name': 'Barman',
     'profile:gender': 'male',
   },
 };

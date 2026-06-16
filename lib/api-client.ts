@@ -181,7 +181,17 @@ export async function fetchTimeline() {
  * Fetch all testimonials
  */
 export async function fetchTestimonials() {
-  return fetchAPI<any[]>('/api/public/testimonials');
+  return [
+    {
+      _id: "t1",
+      quote: "Niloy Kumar Barman is an outstanding developer who quickly adapted to our work processes. He delivered tasks flawlessly and always maintained a positive attitude.",
+      author: "Md Aminul Hoque",
+      role: "Senior Software Engineer",
+      company: "Pledge It",
+      approved: true,
+      order: 1
+    }
+  ];
 }
 
 /**
