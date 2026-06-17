@@ -94,6 +94,9 @@ jobs:
             echo "⚠️ GitHub data file NOT found - fetch may have failed"
           fi
 
+      - name: Clear fetch cache
+        run: rm -rf .next/cache/fetch-cache
+
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
