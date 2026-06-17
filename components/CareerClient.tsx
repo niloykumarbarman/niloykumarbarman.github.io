@@ -25,8 +25,8 @@ const CareerClient = ({ timeline }: CareerClientProps) => {
   const totalExperience = calculateTotalExperience(timeLineItems);
   const totalCompanies = timeLineItems.length;
   const leadershipRoles = timeLineItems.filter(item =>
-    item.position.toLowerCase().includes('lead') ||
-    item.position.toLowerCase().includes('senior')
+    (item?.position ?? item?.title ?? '').toLowerCase().includes('lead') ||
+    (item?.position ?? item?.title ?? '').toLowerCase().includes('senior')
   ).length;
   const totalAchievements = timeLineItems.reduce((acc, item) => acc + item.responsibilities.length, 0);
 
