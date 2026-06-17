@@ -28,7 +28,7 @@ const CareerClient = ({ timeline }: CareerClientProps) => {
     (item?.position ?? item?.title ?? '').toLowerCase().includes('lead') ||
     (item?.position ?? item?.title ?? '').toLowerCase().includes('senior')
   ).length;
-  const totalAchievements = timeLineItems.reduce((acc, item) => acc + item.responsibilities.length, 0);
+  const totalAchievements = timeLineItems.reduce((acc, item) => acc + (item?.responsibilities?.length ?? item?.achievements?.length ?? 0), 0);
 
   // Animated counters for stats
   // Extract years from totalExperience (handles formats: "10+ years", "10 years", "5 months")
