@@ -13,7 +13,7 @@
  * - Testimonials/Blog: Added `order` for custom sorting
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://portfolio-admin-blue.vercel.app';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://portfolio-admin-eta-ruby.vercel.app';
 
 /**
  * V2 Field Helpers - Safe access to optional V2 fields
@@ -181,17 +181,12 @@ export async function fetchTimeline() {
  * Fetch all testimonials
  */
 export async function fetchTestimonials() {
-  return [
-    {
-      _id: "t1",
-      quote: "Niloy Kumar Barman is an outstanding developer who quickly adapted to our work processes. He delivered tasks flawlessly and always maintained a positive attitude.",
-      author: "Md Aminul Hoque",
-      role: "Senior Software Engineer",
-      company: "Pledge It",
-      approved: true,
-      order: 1
-    }
-  ];
+  try {
+    return await fetchAPI<any[]>('/api/public/testimonials');
+  } catch (error) {
+    console.error('Failed to fetch testimonials:', error);
+    return [];
+  }
 }
 
 /**

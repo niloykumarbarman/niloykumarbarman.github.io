@@ -22,13 +22,6 @@ interface SkillNode {
   children?: SkillNode[];
 }
 
-/**
- * Homepage - Server Component
- *
- * Fetches testimonials, certifications, projects, timeline, and skills from portfolio-admin API at build time (SSG).
- * Transforms skills data to match SkillNode format for proper technology counting.
- * Passes data to client component for interactive features.
- */
 export default async function HomePage() {
   let testimonials: TestimonialData[] = [];
   let featuredCertification: Certification | null = null;
@@ -39,28 +32,12 @@ export default async function HomePage() {
   let skills2: SkillNode = { name: "Skills", children: [] };
   let portfolioMetadata: any = { displaySettings: { showLookingForSection: false } };
 
-  // Projects are fetched separately so unrelated failures (e.g., testimonials)
-  // don't wipe out the local project fallback.
   projects = await getProjectsWithFallback();
 
   try {
-    // Fetch all data from admin API in parallel
     const [testimonialData, certificationData, timelineData, skillsData, metadataData] = await Promise.all([
       fetchTestimonials(),
-      Promise.resolve([{
-        _id: "aws-csaa-examprep",
-        name: "Exam Prep: AWS Certified Solutions Architect - Associate",
-        issuer: "Amazon Web Services",
-        platform: "Coursera",
-        date: "2026-06-15",
-        credentialUrl: "https://coursera.org/verify/HMY0BPJMROUB",
-        image: "/assets/certificates/webp/Coursera HG80LDK3GVBH_page-0001 (1).jpg",
-        description: "Prepared for the AWS Certified Solutions Architect - Associate exam, covering core AWS services and cloud architecture best practices.",
-        skills: ["AWS", "Cloud Architecture", "Solutions Architecture"],
-        featured: true,
-        status: "active",
-        isUpcoming: false
-      }]),
+      fetchCertifications(),
       fetchTimeline(),
       fetchSkillHierarchy(),
       fetchPortfolioMetadata(),
@@ -71,19 +48,16 @@ export default async function HomePage() {
     testimonials = testimonialData;
     timeline = timelineData;
 
-    // Transform skills API data to SkillNode format (same as Skills page)
     const transformedSkills = transformApiToSkillsData(skillsData);
     skills1 = transformedSkills.skills1;
     skills2 = transformedSkills.skills2;
 
-    // V2: Sort testimonials by order field (lower order = higher priority)
     testimonials = testimonials.sort((a, b) => {
       const aOrder = v2Helpers.getTestimonialOrder(a);
       const bOrder = v2Helpers.getTestimonialOrder(b);
       return aOrder - bOrder;
     });
 
-    // Get the most recent featured certification
     const featuredCerts = certifications
       .filter(cert => cert.featured && !cert.isUpcoming)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -91,34 +65,9 @@ export default async function HomePage() {
     featuredCertification = featuredCerts[0] || null;
   } catch (error) {
     console.error('Failed to fetch homepage data:', error);
-    // Fallback to defaults (projects are already populated from getProjectsWithFallback)
-    testimonials = [
-      {
-        _id: "testimonial-1",
-        quote: "Niloy Kumar Barman is an outstanding individual who quickly adapted to our work processes. He delivered his tasks flawlessly and always maintained a positive attitude.",
-        author: "Md Aminul Hoque",
-        role: "Senior Software Engineer",
-        company: "Pledge It",
-        approved: true,
-        order: 1
-      }
-    ];
+    testimonials = [];
     featuredCertification = null;
-    certifications = [
-      {
-        _id: "aws-csaa-examprep",
-        name: "Exam Prep: AWS Certified Solutions Architect - Associate",
-        issuer: "Amazon Web Services",
-        platform: "Coursera",
-        date: "2026-06-15",
-        credentialUrl: "https://coursera.org/verify/HMY0BPJMROUB",
-        image: "/assets/certificates/webp/Coursera HG80LDK3GVBH_page-0001 (1).jpg",
-        description: "Prepared for the AWS Certified Solutions Architect - Associate exam, covering core AWS services and cloud architecture best practices.",
-        skills: ["AWS", "Cloud Architecture", "Solutions Architecture"],
-        featured: true,
-        status: "active"
-      }
-    ];
+    certifications = [];
     timeline = [];
     skills1 = { name: "Skills", children: [] };
     skills2 = { name: "Skills", children: [] };
