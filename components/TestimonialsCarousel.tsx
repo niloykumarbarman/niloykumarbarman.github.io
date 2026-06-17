@@ -117,7 +117,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                 ) : (
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/30 to-cyan-500/30 border-2 border-purple-400/50 flex items-center justify-center shadow-lg shadow-purple-500/20">
                     <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                      {currentTestimonial.author.charAt(0)}
+                      {(currentTestimonial?.author ?? "").charAt(0)}
                     </span>
                   </div>
                 )}

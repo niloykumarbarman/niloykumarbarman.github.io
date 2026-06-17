@@ -734,7 +734,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                             </p>
                             <div className="flex items-center gap-2">
                               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xs">
-                                {testimonial.author.charAt(0)}
+                                {(testimonial?.author ?? "").charAt(0)}
                               </div>
                               <div>
                                 <p className="text-white font-semibold text-xs sm:text-sm">{testimonial.author}</p>

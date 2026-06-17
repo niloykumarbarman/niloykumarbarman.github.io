@@ -152,7 +152,7 @@ const CertificationTimeline: React.FC<CertificationTimelineProps> = ({
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <span className={isFeatured ? "text-purple-400 text-4xl" : "text-secondary-default text-4xl"}>
-                        {cert.name.charAt(0)}
+                        {(cert?.name ?? "").charAt(0)}
                       </span>
                     </div>
                   )}
