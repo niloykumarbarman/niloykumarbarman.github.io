@@ -102,7 +102,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
             >
               {/* Quote - smaller text to fit full content */}
               <p className="text-sm md:text-base text-white/90 leading-relaxed mb-6 italic max-h-[140px] overflow-y-auto custom-scrollbar">
-                "{currentTestimonial.quote}"
+                "{(currentTestimonial?.message ?? currentTestimonial?.quote ?? "")}"
               </p>
 
               {/* Author Info */}
@@ -111,7 +111,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                 {currentTestimonial.image ? (
                   <img
                     src={currentTestimonial.image}
-                    alt={currentTestimonial.author}
+                    alt={(currentTestimonial?.name ?? currentTestimonial?.author ?? "")}
                     className="w-16 h-16 rounded-full border-2 border-purple-400/50 object-cover shadow-lg shadow-purple-500/20"
                   />
                 ) : (
@@ -126,7 +126,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2">
                     <h4 className="text-lg font-semibold text-white">
-                      {currentTestimonial.author}
+                      {(currentTestimonial?.name ?? currentTestimonial?.author ?? "")}
                     </h4>
                     {currentTestimonial.linkedinUrl && (
                       <a
@@ -134,14 +134,14 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-400 hover:text-blue-300 transition-colors"
-                        aria-label={`${currentTestimonial.author}'s LinkedIn`}
+                        aria-label={`${(currentTestimonial?.name ?? currentTestimonial?.author ?? "")}'s LinkedIn`}
                       >
                         <FaLinkedin className="text-lg" />
                       </a>
                     )}
                   </div>
                   <p className="text-sm text-white/60">
-                    {currentTestimonial.role}
+                    {(currentTestimonial?.role ?? "")}
                     {currentTestimonial.company && (
                       <span className="text-secondary-default/80"> @ {currentTestimonial.company}</span>
                     )}
@@ -185,7 +185,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                     ? "w-6 bg-gradient-to-r from-secondary-default to-blue-500"
                     : "bg-white/20 hover:bg-white/40"
                 }`}
-                aria-label={`Go to testimonial from ${testimonial.author}`}
+                aria-label={`Go to testimonial from ${(testimonial?.name ?? testimonial?.author ?? "")}`}
                 aria-selected={index === currentIndex}
               />
             ))}

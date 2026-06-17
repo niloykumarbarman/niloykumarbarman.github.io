@@ -184,9 +184,11 @@ export interface TimelineEntry {
 
 export interface TestimonialData {
   _id: string;
-  quote: string;
-  author: string;
-  role: string;
+  quote?: string;
+  message?: string;
+  author?: string;
+  name?: string;
+  role?: string;
   company?: string;
   linkedinUrl?: string;
   image?: string; // Optional avatar image
