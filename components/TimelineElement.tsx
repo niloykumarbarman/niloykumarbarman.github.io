@@ -145,7 +145,7 @@ const TimelineElement: React.FC<TimelineElementProps> = ({
           {/* Job Type Tags + Location - Desktop */}
           <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
             {/* Job Type Badges - Match CATEGORY_BADGE_CLASSES with contextual colors */}
-            {item.jobType.map((type, typeIndex) => (
+            {(item?.jobType ?? []).map((type, typeIndex) => (
               <span
                 key={typeIndex}
                 className={`inline-flex items-center justify-center h-7 text-[11px] px-2.5 rounded-lg font-bold uppercase tracking-wide backdrop-blur-sm transition-all duration-300 ${isFeatured
@@ -196,7 +196,7 @@ const TimelineElement: React.FC<TimelineElementProps> = ({
           {/* Row 2: Job Types + Separator + Location - All in one row */}
           <div className="flex items-center gap-2">
             {/* Job Type Badges */}
-            {item.jobType.map((type, typeIndex) => (
+            {(item?.jobType ?? []).map((type, typeIndex) => (
               <span
                 key={typeIndex}
                 className={`inline-flex items-center justify-center h-7 text-[10px] px-2 rounded-lg font-bold uppercase tracking-wide backdrop-blur-sm transition-all duration-300 flex-shrink-0 ${isFeatured
@@ -237,7 +237,7 @@ const TimelineElement: React.FC<TimelineElementProps> = ({
             className="space-y-2 list-none"
             aria-labelledby={`responsibilities-heading-${index}`}
           >
-            {item.responsibilities.map((responsibility, respIndex) => (
+            {(item?.responsibilities ?? item?.achievements ?? []).map((responsibility, respIndex) => (
               <motion.li
                 key={respIndex}
                 initial={{ opacity: 0, x: -20 }}
