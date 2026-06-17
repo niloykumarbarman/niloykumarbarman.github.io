@@ -110,6 +110,7 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
+          NEXT_PUBLIC_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
           NEXT_PUBLIC_PAGECLIP_API_KEY: ${{ secrets.NEXT_PUBLIC_PAGECLIP_API_KEY }}
           NEXT_PUBLIC_ENABLE_SEARCH: ${{ secrets.NEXT_PUBLIC_ENABLE_SEARCH }}
           NEXT_PUBLIC_ENABLE_FILTER: ${{ secrets.NEXT_PUBLIC_ENABLE_FILTER }}
