@@ -3,7 +3,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { PersonSchema, WebSiteSchema, OrganizationSchema } from "@/components/StructuredData";
 import RootLayoutClient from "@/components/RootLayoutClient";
-import { fetchProjects, fetchCertifications, fetchSkillHierarchy } from "@/lib/api-client";
+import { fetchProjects, fetchCertificationsLight, fetchSkillHierarchy } from "@/lib/api-client";
 import type { Project, Certification } from "@/types/api";
 
 interface SkillHierarchyNode {
@@ -143,7 +143,7 @@ export default async function RootLayout({
   try {
     [projects, certifications, skillsHierarchy] = await Promise.all([
       fetchProjects(),
-      fetchCertifications(),
+      fetchCertificationsLight(),
       fetchSkillHierarchy(),
     ]);
   } catch (error) {

@@ -129,6 +129,8 @@ export async function fetchProjects(params?: {
 /**
  * Fetch all certifications
  */
+let certificationsCache: Promise<any[]> | null = null;
+
 export async function fetchCertifications(params?: {
   category?: string;
   status?: string;
@@ -136,6 +138,10 @@ export async function fetchCertifications(params?: {
   limit?: number;
   page?: number;
 }) {
+  if (!params && certificationsCache) {
+    return certificationsCache;
+  }
+
   const queryParams = new URLSearchParams();
 
   if (params?.category) queryParams.append('category', params.category);
@@ -147,7 +153,13 @@ export async function fetchCertifications(params?: {
   const query = queryParams.toString();
   const endpoint = `/api/public/certifications${query ? `?${query}` : ''}`;
 
-  return fetchAPI<any[]>(endpoint);
+  const promise = fetchAPI<any[]>(endpoint);
+
+  if (!params) {
+    certificationsCache = promise;
+  }
+
+  return promise;
 }
 
 /**
@@ -279,4 +291,20 @@ export async function fetchAchievements(params?: {
     // Return empty array as fallback
     return [];
   }
+}
+
+/**
+ * Fetch certifications WITHOUT heavy image/thumbImage fields.
+ * Use this anywhere images aren't rendered (e.g. GlobalSearch) to avoid
+ * pulling the full ~10MB base64 image payload at build time.
+ */
+export async function fetchCertificationsLight(params?: {
+  category?: string;
+  status?: string;
+  featured?: boolean;
+  limit?: number;
+  page?: number;
+}) {
+  const certs = await fetchCertifications(params);
+  return certs.map(({ image, thumbImage, ...rest }) => rest);
 }

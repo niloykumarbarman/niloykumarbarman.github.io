@@ -58,8 +58,8 @@ export default async function HomePage() {
       return aOrder - bOrder;
     });
 
-    const featuredCerts = certifications
-      .filter(cert => cert.featured && !cert.isUpcoming)
+    const featuredCerts = featuredCertData
+      .filter(cert => !cert.isUpcoming)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     featuredCertification = featuredCerts[0] || null;
