@@ -64,11 +64,11 @@ const FeaturedCertificationCard: React.FC<FeaturedCertificationCardProps> = ({
           <div className="relative flex-shrink-0">
             {displayImage ? (
               <div className="relative w-12 h-12 sm:w-14 sm:h-14">
-                <Image
+                <img
                   src={displayImage}
                   alt={`${name} certificate`}
-                  fill
-                  className="object-contain"
+                  className="absolute inset-0 w-full h-full object-contain"
+                  loading="lazy"
                 />
               </div>
             ) : (
@@ -143,11 +143,11 @@ const FeaturedCertificationCard: React.FC<FeaturedCertificationCardProps> = ({
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-secondary-default to-blue-500 opacity-60 blur-md" />
             {displayImage ? (
               <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-white/20 bg-white/5 z-10">
-                <Image
+                <img
                   src={displayImage}
                   alt={`${name} certificate`}
-                  fill
-                  className="object-contain p-2"
+                  className="absolute inset-0 w-full h-full object-contain p-2"
+                  loading="lazy"
                 />
               </div>
             ) : (

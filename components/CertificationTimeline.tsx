@@ -141,12 +141,13 @@ const CertificationTimeline: React.FC<CertificationTimelineProps> = ({
                       <div className={`absolute inset-0 rounded-md blur-md opacity-70 ${
                         isFeatured ? 'bg-purple-500/5' : 'bg-secondary-default/5'
                       }`} />
-                      <Image
+                      <img
                         src={cert.thumbImage || cert.image || ""}
                         alt={`${cert.name} certificate`}
                         width={160}
                         height={100}
                         className="object-contain z-10"
+                        loading="lazy"
                       />
                     </div>
                   ) : (
