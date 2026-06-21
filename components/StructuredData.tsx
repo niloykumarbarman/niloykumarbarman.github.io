@@ -44,7 +44,7 @@ export const PersonSchema = () => {
       addressCountry: "Bangladesh"
     },
     email: "niloybarman829@gmail.com",
-    telephone: "+880 1766644023",
+    telephone: "+880 01766644823",
     knowsAbout: [
       ".NET Development",
       "React Development", 

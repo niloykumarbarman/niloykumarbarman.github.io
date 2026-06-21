@@ -106,7 +106,7 @@ const validateForm = (data: FormData) => {
 
 // Fallback default values (used if API fails or data is not available)
 const DEFAULT_CONTACT_INFO = {
-  phone: "+880 1766644023",
+  phone: "+880 01766644823",
   email: "niloykumarbarman829@gmail.com",
   teams: "niloykumarbarman@live.com",
   location: "Dhaka, Bangladesh",
