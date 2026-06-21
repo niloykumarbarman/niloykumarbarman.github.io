@@ -1,15 +1,11 @@
 import type { NextConfig } from "next";
 import bundleAnalyzer from '@next/bundle-analyzer';
-
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
-
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
-  // basePath: "/niloykumarbarman.github.io",
-  // assetPrefix: "/niloykumarbarman.github.io/",
   reactStrictMode: true,
   images: {
     unoptimized: true,
@@ -17,23 +13,19 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-  // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   experimental: {
     optimizePackageImports: ['react-icons', 'framer-motion', 'lucide-react'],
   },
-  // Disable server-side features for static export
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Bundle optimization - compatible with Next.js 15
   webpack: (config, { isServer }) => {
-    // Optimize bundle size for client-side only
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -42,15 +34,10 @@ const nextConfig: NextConfig = {
         tls: false,
       };
     }
-
-    // Optimize module resolution
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': './.',
     };
-
-    // Split chunks for better caching - optimized for PageSpeed
-    // Strategy: Split framework and heavy lazy-loaded libs, keep icons with vendor
     config.optimization = {
       ...config.optimization,
       splitChunks: {
@@ -58,42 +45,36 @@ const nextConfig: NextConfig = {
         maxInitialRequests: 10,
         maxAsyncRequests: 10,
         cacheGroups: {
-          // React framework - critical path, separate for better caching
           framework: {
             test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
             name: 'framework',
             priority: 40,
             enforce: true,
           },
-          // Mermaid - only used in modals (lazy loaded), separate chunk
           mermaid: {
-            test: /[\\/]node_modules[\\/]mermaid[\\/]/,
+            test: /[\\/]node_modules[\\/](mermaid|cytoscape|katex|@mermaid-js|dagre-d3-es|khroma|non-layered-tidy-tree-layout|d3-sankey|flowchart-elk)[\\/]/,
             name: 'mermaid',
             priority: 35,
             enforce: true,
           },
-          // UI libraries - used across site
           uiLibs: {
             test: /[\\/]node_modules[\\/](@radix-ui|framer-motion)[\\/]/,
             name: 'ui-libs',
             priority: 30,
             enforce: true,
           },
-          // Markdown rendering - used on some pages
           markdown: {
             test: /[\\/]node_modules[\\/](react-markdown|remark-gfm)[\\/]/,
             name: 'markdown',
             priority: 25,
             enforce: true,
           },
-          // All other vendors (including icons - keep together for initial load)
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendor',
             priority: 10,
             enforce: true,
           },
-          // Shared components (used 2+ times)
           common: {
             name: 'common',
             minChunks: 2,
@@ -103,9 +84,7 @@ const nextConfig: NextConfig = {
         },
       },
     };
-
     return config;
   },
 };
-
 export default withBundleAnalyzer(nextConfig);
