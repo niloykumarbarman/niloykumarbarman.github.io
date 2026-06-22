@@ -203,18 +203,19 @@ export const ANIMATION_STRATEGY = {
 export const SEO = {
   DEFAULT_TITLE: "Niloy's Portfolio",
   DEFAULT_DESCRIPTION: "Portfolio of Niloy Kumar Barman - Full-Stack .NET Developer",
-  SITE_URL: "https://Niloy Kumar Barman.github.io",
+  SITE_URL: "https://niloykumarbarman.github.io",
   AUTHOR: "Niloy Kumar Barman",
 } as const;
 
 // Social media links
 export const SOCIAL_LINKS = {
-  GITHUB: "https://github.com/Niloy Kumar Barman",
-  LINKEDIN: "https://linkedin.com/in/Niloy Kumar Barman",
-  EMAIL: "আপনার_gmail@gmail.com",
+  GITHUB: "https://github.com/niloykumarbarman",
+  LINKEDIN: "https://www.linkedin.com/in/niloy-kumar-barman-552634339",
+  MEDIUM: "https://medium.com/@niloykumarbarman",
+  EMAIL: "niloybarman829@gmail.com",
   PHONE: "+880 1766644823",
   WHATSAPP: "+880 1766644823",
-  TEAMS: "Niloy Kumar Barman@live.com",
+  TEAMS: "niloybarman829@gmail.com",
 } as const;
 
 // Re-export pagination and filter constants (Priority 2.5)
