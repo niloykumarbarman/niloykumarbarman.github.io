@@ -247,6 +247,12 @@ const CertificationsClient = ({ certifications: certificationsProp }: Certificat
       <div className="absolute bottom-40 right-20 w-80 h-80 bg-secondary-default/3 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-16">
+            <SkeletonCard variant="certification" count={6} />
+          </div>
+        ) : (
+          <>
         {/* Certifications Header - Left Aligned like Project/Career Pages */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -607,6 +613,8 @@ const CertificationsClient = ({ certifications: certificationsProp }: Certificat
             />
           </TabsContent>
         </Tabs>
+          </>
+        )}
       </div>
     </section>
   );
