@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import type { Certification } from "@/types/api";
 import CertificationCard from "@/components/CertificationCard";
@@ -16,6 +16,7 @@ import { PERFORMANCE_VARIANTS } from "@/constants";
 import { useCountUp } from "@/hooks/useCountUp";
 import { v2Helpers } from "@/lib/api-client";
 import StatsCards from "@/components/StatsCards";
+import SkeletonCard from "@/components/ui/SkeletonCard";
 import { useCertificationFiltering } from "@/hooks/useCertificationFiltering";
 import CertificationTabContent from "@/components/certifications/CertificationTabContent";
 
@@ -92,6 +93,12 @@ const CertificationsClient = ({ certifications: certificationsProp }: Certificat
   const [selectedIssuer, setSelectedIssuer] = useState<string>("all");
   const [selectedYear, setSelectedYear] = useState<string>("all");
   const [selectedStatus, setSelectedStatus] = useState<string>("all");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 700);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Define initial display limit (show important certifications first)
   const INITIAL_DISPLAY_COUNT = 12;

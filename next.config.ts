@@ -1,8 +1,20 @@
 import type { NextConfig } from "next";
 import bundleAnalyzer from '@next/bundle-analyzer';
+
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
+
+// CDN domains allowed for optimized images
+const CDN_DOMAINS = [
+  'portfolio-admin-eta-ruby.vercel.app',
+  'res.cloudinary.com',
+  'cdn.jsdelivr.net',
+  'raw.githubusercontent.com',
+  'avatars.githubusercontent.com',
+  'images.unsplash.com',
+];
+
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
@@ -10,8 +22,14 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
     formats: ['image/webp', 'image/avif'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 86400,
+    remotePatterns: CDN_DOMAINS.map(hostname => ({
+      protocol: 'https' as const,
+      hostname,
+      pathname: '/**',
+    })),
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
@@ -87,4 +105,5 @@ const nextConfig: NextConfig = {
     return config;
   },
 };
+
 export default withBundleAnalyzer(nextConfig);

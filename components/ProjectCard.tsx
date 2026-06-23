@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { CSS_ANIMATIONS } from "@/constants";
@@ -31,27 +31,38 @@ interface ProjectCardProps {
   selectedSkill?: string | null;
 }
 
+const BLUR_DATA_URL =
+  "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoBAAEAAkA4JYgCdAEO/gHOAAD++P///////////////////////wAA";
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   project,
   index,
   onOpenModal,
-  className = ""}) => {
+  className = "",
+}) => {
+  const [imgError, setImgError] = useState(false);
+
   const hasGithubLink = project.github && project.github.trim() !== "";
-  const displayImage = project.thumbImage || project.image;
-  const staggerClass = index < 5 ? `animate-stagger-${index + 1}` : '';
+  const displayImage = imgError
+    ? "/assets/portfolio/placeholder.webp"
+    : (project.thumbImage || project.image);
+
+  const staggerClass = index < 5 ? `animate-stagger-${index + 1}` : "";
   const isFeatured = project.isFeatured === true;
   const primaryMetric = getPrimaryMetric(project);
+  const loadingStrategy = index < 3 ? "eager" : "lazy";
+  const fetchPriority = index < 3 ? "high" : "auto";
 
   return (
     <article
       key={project.num}
       data-testid={`project-card-${project.num}`}
-      aria-label={`${project.title} - ${project.category} project${isFeatured ? ' (Featured)' : ''}${project.isActive ? ' - Active' : ' - Completed'}`}
-      className={`group relative p-5 rounded-xl border transition-all duration-500 flex flex-col justify-between ${className} ${CSS_ANIMATIONS.FADE_IN_UP} ${staggerClass} hover:scale-[1.02] hover:shadow-2xl ${isFeatured
-        ? 'bg-gradient-to-br from-purple-500/5 via-gray-800 to-gray-900 border-purple-500/30 shadow-md shadow-purple-500/10 hover:border-purple-500/50 hover:shadow-purple-500/20'
-        : 'bg-gradient-to-br from-gray-800 to-gray-900 border-secondary-default/20 hover:border-secondary-default/60 hover:shadow-secondary-default/20'
-        }`}
+      aria-label={`${project.title} - ${project.category} project${isFeatured ? " (Featured)" : ""}${project.isActive ? " - Active" : " - Completed"}`}
+      className={`group relative p-5 rounded-xl border transition-all duration-500 flex flex-col justify-between ${className} ${CSS_ANIMATIONS.FADE_IN_UP} ${staggerClass} hover:scale-[1.02] hover:shadow-2xl ${
+        isFeatured
+          ? "bg-gradient-to-br from-purple-500/5 via-gray-800 to-gray-900 border-purple-500/30 shadow-md shadow-purple-500/10 hover:border-purple-500/50 hover:shadow-purple-500/20"
+          : "bg-gradient-to-br from-gray-800 to-gray-900 border-secondary-default/20 hover:border-secondary-default/60 hover:shadow-secondary-default/20"
+      }`}
     >
       {/* Project Image */}
       <div
@@ -64,40 +75,50 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             target="_blank"
             data-testid={`project-image-link-${project.num}`}
           >
-            <div className="relative rounded-lg overflow-hidden">
+            <div className="relative rounded-lg overflow-hidden bg-gray-800/50">
               <Image
                 src={displayImage}
                 alt={`${project.title} project screenshot`}
                 width={500}
                 height={300}
+                loading={loadingStrategy}
+                fetchPriority={fetchPriority}
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
                 className="rounded-lg transition-all duration-500 group-hover:scale-105"
+                onError={() => setImgError(true)}
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
               />
             </div>
           </Link>
         ) : (
-          <div className="relative rounded-lg overflow-hidden">
+          <div className="relative rounded-lg overflow-hidden bg-gray-800/50">
             <Image
               src={displayImage}
               alt={`${project.title} project screenshot`}
               width={500}
               height={300}
+              loading={loadingStrategy}
+              fetchPriority={fetchPriority}
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
               className="rounded-lg opacity-80"
+              onError={() => setImgError(true)}
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
             />
           </div>
         )}
 
-        {/* Primary Metric Badge - Bottom, full width inside the card */}
         {primaryMetric && (
           <div className="absolute bottom-2 inset-x-2 flex">
             <PrimaryMetricBadge metric={primaryMetric} />
           </div>
         )}
 
-        {/* Badge Overlay - Top Right Corner - Icons with Tooltips */}
         <div className="absolute top-2 right-2 flex flex-row gap-2 items-center">
           {isFeatured && <FeaturedBadge variant="icon" />}
           {project.isCurrent && <CurrentBadge variant="icon" />}
-          <div data-testid={`project-status-${project.isActive ? 'active' : 'inactive'}-${project.num}`}>
+          <div data-testid={`project-status-${project.isActive ? "active" : "inactive"}-${project.num}`}>
             <StatusBadgeIcon
               isActive={project.isActive}
               inactivationReason={project.inactivationReason}
@@ -106,18 +127,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
       </div>
 
-      {/* Project Title */}
+      {/* Title */}
       <div className="mb-3">
         <h3
           data-testid={`project-title-${project.num}`}
-          className={`font-bold transition-colors duration-300 leading-tight ${isFeatured
-            ? 'text-xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'
-            : 'text-lg bg-gradient-to-r from-[#00BFFF] to-white bg-clip-text text-transparent'
-            }`}
+          className={`font-bold transition-colors duration-300 leading-tight ${
+            isFeatured
+              ? "text-xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+              : "text-lg bg-gradient-to-r from-[#00BFFF] to-white bg-clip-text text-transparent"
+          }`}
         >
           {project.title}
         </h3>
-
         {project.subtitle && (
           <p className="text-xs font-light text-[#00BFFF]/80 leading-relaxed mt-2 line-clamp-2">
             {project.subtitle}
@@ -125,36 +146,30 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
       </div>
 
-      {/* Bottom Section - Compact layout */}
+      {/* Bottom Section */}
       <div className="mt-auto space-y-3">
-        {/* Project Metadata - Single Consolidated Badge Row */}
         <div data-testid={`project-badges-${project.num}`}>
           <BadgeRow>
             <span data-testid={`project-category-badge-${project.num}`} className="inline-flex">
               <CategoryBadge category={project.category} />
             </span>
-
             {(project.isOpenSource || (project.recognition && project.recognition.length > 0)) && (
               <BadgeSeparator />
             )}
-
             {project.isOpenSource && (
               <span data-testid={`project-opensource-badge-${project.num}`}>
-                <OpenSourceBadge variant="icon"  />
+                <OpenSourceBadge variant="icon" />
               </span>
             )}
-
             {project.isOpenSource && project.recognition && project.recognition.length > 0 && (
               <BadgeSeparator />
             )}
-
             {project.recognition && project.recognition.length > 0 && (
               <RecognitionBadge recognitions={project.recognition} />
             )}
           </BadgeRow>
         </div>
 
-        {/* Consolidated Metadata: Company, Role, Timeline */}
         <div className="flex flex-wrap items-center gap-2 text-xs text-white/70">
           {project.associatedWithCompany && (
             <>
@@ -165,40 +180,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               <span className="text-white/30">•</span>
             </>
           )}
-          {project.jobRole && (
-            <>
-              <span>{project.jobRole}</span>
-            </>
-          )}
+          {project.jobRole && <span>{project.jobRole}</span>}
           <ProjectTimeline startDate={project.startDate} endDate={project.endDate} />
         </div>
 
-        {/* Skills Highlighted - Expandable Display */}
         {project.skillsHighlighted && project.skillsHighlighted.length > 0 && (
-          <ProjectSkills
-            skills={project.skillsHighlighted}
-            displayMode="expandable"
-          />
+          <ProjectSkills skills={project.skillsHighlighted} displayMode="expandable" />
         )}
 
-        {/* Tech Stacks - Compact 2-Column List */}
         <div data-testid={`project-tech-stack-${project.num}`}>
-          <TechStack
-            stacks={project.stacks}
-            columns={2}
-            expandable
-          />
+          <TechStack stacks={project.stacks} columns={2} expandable />
         </div>
       </div>
 
-      {/* Action Buttons - Fixed at bottom */}
+      {/* Action Buttons */}
       <div
         data-testid={`project-actions-${project.num}`}
         className="flex gap-3 mt-3"
         role="group"
         aria-label={`Actions for ${project.title}`}
       >
-        {/* View Details Button */}
         <button
           data-testid={`project-details-button-${project.num}`}
           onClick={() => onOpenModal(project)}
@@ -209,7 +210,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <span>View Details</span>
         </button>
 
-        {/* GitHub Button */}
         {hasGithubLink && (
           <Link
             href={project.github}

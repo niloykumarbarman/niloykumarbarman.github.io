@@ -19,27 +19,43 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://portfolio-
  * V2 Field Helpers - Safe access to optional V2 fields
  */
 export const v2Helpers = {
-  /** Get project status (current or completed) */
   isCurrentProject: (project: any) => project?.isCurrent ?? false,
-
-  /** Get certification order (fallback to 0) */
   getCertOrder: (cert: any) => cert?.order ?? 0,
-
-  /** Get skill type order (fallback to 0) */
   getSkillOrder: (skill: any) => skill?.order ?? 0,
-
-  /** Get timeline address (fallback to location) */
   getAddress: (timeline: any) => timeline?.address ?? timeline?.location ?? '',
-
-  /** Check if timeline entry is current position */
   isCurrentPosition: (timeline: any) => timeline?.isCurrent ?? false,
-
-  /** Get testimonial order (fallback to 0) */
   getTestimonialOrder: (testimonial: any) => testimonial?.order ?? 0,
-
-  /** Get blog post order (fallback to 0) */
   getBlogOrder: (post: any) => post?.order ?? 0,
 };
+
+/**
+ * In-memory cache with TTL support
+ */
+interface CacheEntry {
+  data: any;
+  timestamp: number;
+  ttl: number;
+}
+
+const apiCache = new Map<string, CacheEntry>();
+
+function getCached<T>(key: string): T | null {
+  const entry = apiCache.get(key);
+  if (!entry) return null;
+  if (Date.now() - entry.timestamp > entry.ttl) {
+    apiCache.delete(key);
+    return null;
+  }
+  return entry.data as T;
+}
+
+function setCache(key: string, data: any, ttl: number): void {
+  apiCache.set(key, { data, timestamp: Date.now(), ttl });
+}
+
+export function clearAPICache(): void {
+  apiCache.clear();
+}
 
 /**
  * Generic fetch wrapper with error handling
@@ -53,10 +69,6 @@ async function fetchAPI<T>(endpoint: string): Promise<T> {
       headers: {
         'Content-Type': 'application/json',
       },
-      // Revalidate every 24 hours for SSG. (`cache: 'no-store'` would opt routes
-      // into dynamic rendering and silently break `output: "export"`.) Stale
-      // fetch-cache reuse across CI builds is mitigated by the workflow
-      // wiping `.next/cache/fetch-cache` before each build.
       next: { revalidate: 86400 },
     });
 
@@ -78,10 +90,23 @@ async function fetchAPI<T>(endpoint: string): Promise<T> {
 }
 
 /**
- * Fetch all enums (dropdown values) for filters and forms
+ * Cached fetch wrapper - checks memory cache before hitting API
+ */
+async function fetchAPIWithCache<T>(endpoint: string, ttl = 86400 * 1000): Promise<T> {
+  const cached = getCached<T>(endpoint);
+  if (cached !== null) {
+    return cached;
+  }
+  const data = await fetchAPI<T>(endpoint);
+  setCache(endpoint, data, ttl);
+  return data;
+}
+
+/**
+ * Fetch all enums
  */
 export async function fetchEnums() {
-  return fetchAPI<{
+  return fetchAPIWithCache<{
     projectCategories: string[];
     companies: string[];
     jobRoles: string[];
@@ -116,9 +141,8 @@ export async function fetchProjects(params?: {
   const query = queryParams.toString();
   const endpoint = `/api/public/projects${query ? `?${query}` : ''}`;
 
-  const projects = await fetchAPI<any[]>(endpoint);
+  const projects = await fetchAPIWithCache<any[]>(endpoint);
 
-  // Convert date strings to Date objects (keep endDate as null for ongoing projects)
   return projects.map(project => ({
     ...project,
     startDate: project.startDate ? new Date(project.startDate) : new Date(),
@@ -129,8 +153,6 @@ export async function fetchProjects(params?: {
 /**
  * Fetch all certifications
  */
-let certificationsCache: Promise<any[]> | null = null;
-
 export async function fetchCertifications(params?: {
   category?: string;
   status?: string;
@@ -138,10 +160,6 @@ export async function fetchCertifications(params?: {
   limit?: number;
   page?: number;
 }) {
-  if (!params && certificationsCache) {
-    return certificationsCache;
-  }
-
   const queryParams = new URLSearchParams();
 
   if (params?.category) queryParams.append('category', params.category);
@@ -153,35 +171,22 @@ export async function fetchCertifications(params?: {
   const query = queryParams.toString();
   const endpoint = `/api/public/certifications${query ? `?${query}` : ''}`;
 
-  const promise = fetchAPI<any[]>(endpoint);
-
-  if (!params) {
-    certificationsCache = promise;
-  }
-
-  return promise;
+  return fetchAPIWithCache<any[]>(endpoint);
 }
 
 /**
  * Fetch skill hierarchy
- * V2: Returns flat SkillType[] with nested SkillItem[]
- * Structure: [{ _id, name, order, icon, skills: [{ _id, name, level, ... }] }]
  */
 export async function fetchSkillHierarchy() {
-  const skillTypes = await fetchAPI<any[]>('/api/public/skill-hierarchy');
-
-  // V2: Data comes as flat SkillType[] with populated skills
-  // No transformation needed - return as-is
-  return skillTypes;
+  return fetchAPIWithCache<any[]>('/api/public/skill-hierarchy');
 }
 
 /**
- * Fetch all timeline entries (career experience)
+ * Fetch all timeline entries
  */
 export async function fetchTimeline() {
-  const timeline = await fetchAPI<any[]>('/api/public/timeline');
+  const timeline = await fetchAPIWithCache<any[]>('/api/public/timeline');
 
-  // Convert date strings to Date objects
   return timeline.map(entry => ({
     ...entry,
     startDate: entry.startDate ? new Date(entry.startDate) : new Date(),
@@ -194,7 +199,7 @@ export async function fetchTimeline() {
  */
 export async function fetchTestimonials() {
   try {
-    return await fetchAPI<any[]>('/api/public/testimonials');
+    return await fetchAPIWithCache<any[]>('/api/public/testimonials');
   } catch (error) {
     console.error('Failed to fetch testimonials:', error);
     return [];
@@ -220,52 +225,41 @@ export async function fetchBlogPosts(params?: {
   const query = queryParams.toString();
   const endpoint = `/api/public/blog${query ? `?${query}` : ''}`;
 
-  return fetchAPI<any[]>(endpoint);
+  return fetchAPIWithCache<any[]>(endpoint);
 }
 
 /**
- * Fetch portfolio metadata (site settings, display toggles)
- * Public endpoint - CORS-enabled for static site access
+ * Fetch portfolio metadata
  */
 export async function fetchPortfolioMetadata() {
+  const DEFAULTS = { displaySettings: { showLookingForSection: false } };
   try {
+    const cached = getCached<any>('/api/public/metadata');
+    if (cached) return cached;
+
     const response = await fetch(`${API_BASE_URL}/api/public/metadata`, {
       mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // Revalidate every hour for metadata changes
+      headers: { 'Content-Type': 'application/json' },
       next: { revalidate: 3600 },
     });
 
     if (!response.ok) {
       console.warn('Portfolio metadata not available, using defaults');
-      return {
-        displaySettings: {
-          showLookingForSection: false,
-        },
-      };
+      return DEFAULTS;
     }
 
     const result = await response.json();
-    return result.data || {
-      displaySettings: {
-        showLookingForSection: false,
-      },
-    };
+    const data = result.data || DEFAULTS;
+    setCache('/api/public/metadata', data, 3600 * 1000);
+    return data;
   } catch (error) {
     console.error('Failed to fetch portfolio metadata:', error);
-    return {
-      displaySettings: {
-        showLookingForSection: false,
-      },
-    };
+    return DEFAULTS;
   }
 }
 
 /**
- * Fetch achievements/highlights
- * Public endpoint - CORS-enabled for static site access
+ * Fetch achievements
  */
 export async function fetchAchievements(params?: {
   activeOnly?: boolean;
@@ -273,30 +267,22 @@ export async function fetchAchievements(params?: {
 }) {
   const queryParams = new URLSearchParams();
 
-  if (params?.activeOnly !== undefined) {
-    queryParams.append('activeOnly', String(params.activeOnly));
-  }
-  if (params?.limit) {
-    queryParams.append('limit', String(params.limit));
-  }
+  if (params?.activeOnly !== undefined) queryParams.append('activeOnly', String(params.activeOnly));
+  if (params?.limit) queryParams.append('limit', String(params.limit));
 
   const query = queryParams.toString();
   const endpoint = `/api/public/achievements${query ? `?${query}` : ''}`;
 
   try {
-    const data = await fetchAPI<any[]>(endpoint);
-    return data;
+    return await fetchAPIWithCache<any[]>(endpoint);
   } catch (error) {
     console.error('Failed to fetch achievements:', error);
-    // Return empty array as fallback
     return [];
   }
 }
 
 /**
- * Fetch certifications WITHOUT heavy image/thumbImage fields.
- * Use this anywhere images aren't rendered (e.g. GlobalSearch) to avoid
- * pulling the full ~10MB base64 image payload at build time.
+ * Fetch certifications WITHOUT heavy image fields (for GlobalSearch etc.)
  */
 export async function fetchCertificationsLight(params?: {
   category?: string;
