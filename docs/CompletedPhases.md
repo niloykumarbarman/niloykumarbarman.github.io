@@ -509,7 +509,7 @@
 **Implementation:**
 - Added email link in availability status section
 - Uses FiMail icon with hover effect
-- Email: biswajitmailid@gmail.com
+- Email: niloykumarbarmanmailid@gmail.com
 - Positioned after availability status text
 
 ---

@@ -1,8 +1,8 @@
 # Deep Refactoring Analysis Report
-**Biswajitpanday Portfolio Project**
+**Niloy Kumar Barman Portfolio Project**
 
 **Analysis Date:** December 23, 2025
-**Project Path:** `C:\D\PERSONAL\biswajitpanday-portfolio\biswajitpanday.github.io`
+**Project Path:** `C:\D\PERSONAL\niloykumarbarman-portfolio\niloykumarbarman.github.io`
 **Total Files Analyzed:** 149 TypeScript/TSX files
 **Total Components:** 104 React components
 

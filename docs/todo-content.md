@@ -177,7 +177,7 @@ Make critical information instantly visible to recruiters who typically spend on
 **Implementation:**
 - Added email link in availability status section
 - Uses FiMail icon with hover effect
-- Email: biswajitmailid@gmail.com
+- Email: niloykumarbarmanmailid@gmail.com
 - Positioned after availability status text
 
 ---
@@ -206,7 +206,7 @@ Organize and curate content to highlight the best work prominently while keeping
 2. ✅ **Updated subtitle:** "Featured on LobeHub & MSeep AI"
 3. ✅ **Added platform links in metrics and case study:**
    - LobeHub: lobehub.com/mcp/strix-ai-currentdt-mcp
-   - MSeep AI: mseep.ai/app/biswajitpanday-currentdt-mcp
+   - MSeep AI: mseep.ai/app/niloykumarbarman-currentdt-mcp
 4. ✅ **Added recognition:** "Platform Recognition" badge for LobeHub & MSeep AI
 
 ---

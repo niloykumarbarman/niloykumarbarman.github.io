@@ -5,7 +5,7 @@
  * into the admin portal's MongoDB database.
  *
  * Usage:
- *   cd biswajitpanday.github.io
+ *   cd niloykumarbarman.github.io
  *   node scripts/export-data-for-admin.cjs
  *
  * Output:

@@ -147,8 +147,8 @@ This command performs the following operations in sequence:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/biswajitpanday/biswajitpanday.github.io.git
-cd biswajitpanday.github.io
+git clone https://github.com/niloykumarbarman/niloykumarbarman.github.io.git
+cd bniloykumarbarman.github.io
 
 # 2. Install dependencies
 npm install
@@ -363,7 +363,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 📞 Contact
 
-- **Email**: biswajitmailid@gmail.com
+- **Email**: niloykumarbarmanmailid@gmail.com
 - **LinkedIn**: [Niloy Kumar Barman](https://linkedin.com/in/niloykumarbarman)
 - **GitHub**: [Niloy Kumar Barman](https://github.com/niloykumarbarman)
 
