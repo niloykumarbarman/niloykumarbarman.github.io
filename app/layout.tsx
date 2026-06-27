@@ -25,14 +25,14 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer",
+    default: "Niloy Kumar Barman - .NET Developer & AI Solutions Engineer",
     template: "%s | Niloy Kumar Barman"
   },
-  description: "10+ years of experience supporting 20+ enterprise clients. Creator of DevSpace, a free Windows desktop app for centralizing developer projects. Specialized in architecting scalable solutions and practical AI tools — including SpireWiz, achieving 80% time reduction. Expert in full-stack development and automation.",
+  description: "1+ years of experience supporting 20+ enterprise clients. Creator of DevSpace, a free Windows desktop app for centralizing developer projects. Specialized in architecting scalable solutions and practical AI tools — including SpireWiz, achieving 80% time reduction. Expert in full-stack development and automation.",
   keywords: [
     "Niloy Kumar Barman",
     ".NET Architect",
-    "Senior .NET Developer",
+    ".NET Developer",
     "AI Solutions Engineer",
     "Enterprise Architecture",
     "Cloud Migration Expert",
@@ -71,8 +71,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer",
-    description: "10+ years of experience supporting 20+ enterprise clients. Creator of DevSpace, a free Windows desktop app for centralizing developer projects. Specialized in architecting scalable solutions and practical AI tools — including SpireWiz, achieving 80% time reduction. Expert in full-stack development and automation.",
+    title: "Niloy Kumar Barman - .NET Developer & AI Solutions Engineer",
+    description: "1+ years of experience supporting 20+ enterprise clients. Creator of DevSpace, a free Windows desktop app for centralizing developer projects. Specialized in architecting scalable solutions and practical AI tools — including SpireWiz, achieving 80% time reduction. Expert in full-stack development and automation.",
     url: "https://niloykumarbarman.github.io",
     siteName: "Niloy Kumar Barman Portfolio",
     images: [
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
         url: "https://niloykumarbarman.github.io/assets/social-preview.webp",
         width: 1200,
         height: 630,
-        alt: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer | 10+ years supporting 20+ enterprise clients",
+        alt: "Niloy Kumar Barman - .NET Developer & AI Solutions Engineer | 1+ years supporting 20+ enterprise clients",
         type: "image/png",
       },
     ],
@@ -92,11 +92,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@niloykumarbarman",
     creator: "@niloykumarbarman",
-    title: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer",
-    description: "Creator of DevSpace (free Windows dev project app) and SpireWiz (AI tool, 80% time reduction). Senior .NET Architect with 10+ years supporting 20+ enterprise clients. Microsoft Certified.",
+    title: "Niloy Kumar Barman - .NET Developer & AI Solutions Engineer",
+    description: "Creator of DevSpace (free Windows dev project app) and SpireWiz (AI tool, 80% time reduction). .NET Developer with 1+ years supporting 20+ enterprise clients. Microsoft Certified.",
     images: {
       url: "https://niloykumarbarman.github.io/assets/social-preview.webp",
-      alt: "Niloy Kumar Barman - Senior .NET Developer & AI Solutions Engineer",
+      alt: "Niloy Kumar Barman - .NET Developer & AI Solutions Engineer",
       width: 1200,
       height: 630,
     },

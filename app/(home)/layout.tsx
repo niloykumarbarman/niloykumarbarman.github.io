@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Niloy Kumar Barman - Full-Stack .NET Developer",
-  description: "Professional portfolio of Niloy Kumar Barman, a skilled Full-Stack .NET Developer with 10+ years experience in building modern web applications and cloud solutions.",
+  description: "Professional portfolio of Niloy Kumar Barman, a skilled Full-Stack .NET Developer with 1+ years experience in building modern web applications and cloud solutions.",
   keywords: [
     "Niloy Kumar Barman",
     "Full-Stack Developer", 
@@ -22,12 +22,12 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Niloy Kumar Barman - Full-Stack .NET Developer",
-    description: "Professional portfolio showcasing 10+ years of experience in .NET, React, and cloud technologies",
+    description: "Professional portfolio showcasing 1+ years of experience in .NET, React, and cloud technologies",
     url: "https://niloykumarbarman.github.io",
   },
   twitter: {
     title: "Niloy Kumar Barman - Full-Stack .NET Developer",
-    description: "Professional portfolio showcasing 10+ years of experience in .NET, React, and cloud technologies",
+    description: "Professional portfolio showcasing 1+ years of experience in .NET, React, and cloud technologies",
   },
 };
 
