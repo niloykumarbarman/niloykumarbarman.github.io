@@ -12,7 +12,7 @@ const SEOOptimizer = () => {
       "@type": "Person",
       "name": "Niloy Kumar Barman",
       "jobTitle": "Full-Stack .NET Developer",
-      "description": "Professional Full-Stack .NET Developer with 10+ years of experience specializing in scalable applications, cloud solutions with .NET, React, Azure & AWS.",
+      "description": "Professional Full-Stack .NET Developer with 1+ years of experience specializing in scalable applications, cloud solutions with .NET, React, Azure & AWS.",
       "url": "https://niloykumarbarman.github.io",
       "sameAs": [
         "https://github.com/niloykumarbarman",
@@ -96,7 +96,7 @@ const SEOOptimizer = () => {
         "name": "What technologies does Niloy Kumar Barman specialize in?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Niloy Kumar Barman specializes in .NET Core, React, TypeScript, Azure, AWS, SQL Server, MongoDB, and modern web development frameworks with over 10 years of experience."
+          "text": "Niloy Kumar Barman specializes in .NET Core, React, TypeScript, Azure, AWS, SQL Server, MongoDB, and modern web development frameworks with over 1+ years of experience."
         }
       },
       {

@@ -1,7 +1,7 @@
 export const portfolioMetadata = {
   displaySettings: { showLookingForSection: false },
   fullName: "Niloy Kumar Barman",
-  role: "Senior Developer",
+  role: ".NET Developer",
   contactEmail: "your@email.com",
   contactInfo: {
     phone: "",
@@ -19,5 +19,5 @@ export const portfolioMetadata = {
   },
   resumeUrl: "",
   siteTitle: "Niloy Kumar Barman's Portfolio",
-  tagline: "Senior Developer"
+  tagline: ".NET Developer"
 };
