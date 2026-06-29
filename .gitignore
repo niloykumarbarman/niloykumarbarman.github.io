@@ -44,3 +44,6 @@ next-env.d.ts
 
 # reference material (mockups, draft copy) — not built or deployed
 /Helper Resources/
+
+.vercel
+.env*

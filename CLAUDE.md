@@ -38,13 +38,13 @@ This portfolio project consists of **two separate repositories**:
 
 **Working on Frontend:**
 ```bash
-cd biswajitpanday.github.io
+cd niloykumarbarman.github.io
 npm run dev                 # Runs on http://localhost:3000
 ```
 
 **Working on Chatbot API (local testing):**
 ```bash
-cd biswajitpanday-portfolio-chatbot
+cd niloykumarbarman-portfolio-chatbot
 vercel dev                  # Runs on http://localhost:3001
 ```
 
